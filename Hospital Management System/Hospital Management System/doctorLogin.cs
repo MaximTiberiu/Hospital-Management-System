@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
+
+namespace Hospital_Management_System
+{
+    public partial class doctorLogin : Form
+    {
+        public doctorLogin()
+        {
+            InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StartApp startApp = new StartApp();
+            startApp.Show();
+            this.Close();
+        }
+
+        public static bool isAllDigits(TextBox textToBeVerified)
+        {
+            string stringToBeVerified = textToBeVerified.Text.Trim();
+
+            foreach (char c in stringToBeVerified)
+                if (!char.IsDigit(c)) return true;
+            return false;
+        }
+
+        public static bool hasSpacesOrDashes(TextBox textToBeVerified)
+        {
+            string stringToBeVerified = textToBeVerified.Text;
+
+            foreach (char c in stringToBeVerified)
+                if (c == ' ') return true;
+            return false;
+        }
+
+        public static bool hasCorrectLength(TextBox textToBeVerified, int num)
+        {
+            string stringToBeVerified = textToBeVerified.Text;
+
+            return !(stringToBeVerified.Length == num);
+        }
+
+        private void buttonDoctor_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxParafa.Text.Trim()) || String.IsNullOrEmpty(textBoxCNP.Text.Trim())) 
+            {
+                MessageBox.Show("Completați toate câmpurile!", "Câmp gol.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (hasSpacesOrDashes(textBoxParafa))
+            {
+                textBoxParafa.Clear();
+                MessageBox.Show("Nu pot exista spații în codul parafă. Vă rugăm să tastați din nou!", "Fara spații.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (hasSpacesOrDashes(textBoxCNP))
+            {
+                textBoxCNP.Clear();
+                MessageBox.Show("Nu pot exista spații în CNP. Vă rugăm să tastați din nou!", "Fara spații.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (isAllDigits(textBoxParafa) || hasCorrectLength(textBoxParafa, 6))
+            {
+                textBoxParafa.Clear();
+                MessageBox.Show("Codul parafă este un număr de 6 cifre. Vă rugăm să tastați din nou!", "Lungime greșită.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (isAllDigits(textBoxCNP) || hasCorrectLength(textBoxCNP, 13))
+            {
+                textBoxCNP.Clear();
+                MessageBox.Show("CNP este un număr de 13 cifre. Vă rugăm să tastați din nou!", "Lungime greșită.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string codParafa = textBoxParafa.Text.Trim();
+            string CNP = textBoxCNP.Text.Trim();
+
+            using (OracleConnection connection = new OracleConnection(@"DATA SOURCE=192.168.56.1:1521/xe; PERSIST SECURITY INFO=True; USER ID=spitaluser1; password=spitalpass; Pooling = False;"))
+            {
+                connection.Open();
+                String command = String.Format(@"SELECT * FROM DOCTORI WHERE codParafa = '{0}' AND CNP = '{1}'", codParafa, CNP);
+                OracleCommand cmd = new OracleCommand(command, connection);
+                OracleDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.HasRows)
+                {
+                    MessageBox.Show("LOGAT!");
+                }
+                else
+                {
+                    MessageBox.Show("Datele introduse nu sunt corecte!", "Date incorecte.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxParafa.Clear();
+                    textBoxCNP.Clear();
+                }
+            }
+                
+        }
+    }
+}
