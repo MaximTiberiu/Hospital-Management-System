@@ -34,7 +34,7 @@ namespace Hospital_Management_System
             return false;
         }
 
-        public static bool hasSpacesOrDashes(TextBox textToBeVerified)
+        public static bool hasSpaces(TextBox textToBeVerified)
         {
             string stringToBeVerified = textToBeVerified.Text;
 
@@ -58,14 +58,14 @@ namespace Hospital_Management_System
                 return;
             }
 
-            if (hasSpacesOrDashes(textBoxParafa))
+            if (hasSpaces(textBoxParafa))
             {
                 textBoxParafa.Clear();
                 MessageBox.Show("Nu pot exista spații în codul parafă. Vă rugăm să tastați din nou!", "Fara spații.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (hasSpacesOrDashes(textBoxCNP))
+            if (hasSpaces(textBoxCNP))
             {
                 textBoxCNP.Clear();
                 MessageBox.Show("Nu pot exista spații în CNP. Vă rugăm să tastați din nou!", "Fara spații.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -124,7 +124,6 @@ namespace Hospital_Management_System
                     MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
