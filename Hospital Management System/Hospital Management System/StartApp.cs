@@ -12,6 +12,7 @@ namespace Hospital_Management_System
 {
     public partial class StartApp : Form
     {
+        public const string connectionString = @"DATA SOURCE = 192.168.56.1:1521/xe; PERSIST SECURITY INFO=True; USER ID = spitaluser1; password=spitalpass; Pooling = False;";
         public StartApp()
         {
             InitializeComponent();
@@ -35,6 +36,13 @@ namespace Hospital_Management_System
         {
             this.Close();
             Environment.Exit(0);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            adminLogin adminLogin = new adminLogin();
+            adminLogin.Show();
+            this.Hide();
         }
     }
 }

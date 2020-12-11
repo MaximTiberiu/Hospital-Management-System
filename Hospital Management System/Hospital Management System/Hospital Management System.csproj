@@ -51,17 +51,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addDoctor.Designer.cs">
+      <DependentUpon>addDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adminLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminLogin.Designer.cs">
+      <DependentUpon>adminLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adminMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminMain.Designer.cs">
+      <DependentUpon>adminMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="doctorLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="doctorLogin.Designer.cs">
       <DependentUpon>doctorLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="doctorMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="doctorMain.Designer.cs">
+      <DependentUpon>doctorMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="patientLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="patientLogin.Designer.cs">
       <DependentUpon>patientLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="patientMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="patientMain.Designer.cs">
+      <DependentUpon>patientMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +101,12 @@
     <Compile Include="StartApp.Designer.cs">
       <DependentUpon>StartApp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="addDoctor.resx">
+      <DependentUpon>addDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminLogin.resx">
+      <DependentUpon>adminLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="doctorLogin.resx">
       <DependentUpon>doctorLogin.cs</DependentUpon>
     </EmbeddedResource>

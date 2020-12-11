@@ -65,7 +65,6 @@ namespace Hospital_Management_System
                 return;
             }
 
-
             if (hasSpacesOrDashes(textBoxCNP))
             {
                 textBoxCNP.Clear();
@@ -90,25 +89,49 @@ namespace Hospital_Management_System
             string codParafa = textBoxParafa.Text.Trim();
             string CNP = textBoxCNP.Text.Trim();
 
-            using (OracleConnection connection = new OracleConnection(@"DATA SOURCE=192.168.56.1:1521/xe; PERSIST SECURITY INFO=True; USER ID=spitaluser1; password=spitalpass; Pooling = False;"))
-            {
-                connection.Open();
-                String command = String.Format(@"SELECT * FROM DOCTORI WHERE codParafa = '{0}' AND CNP = '{1}'", codParafa, CNP);
-                OracleCommand cmd = new OracleCommand(command, connection);
-                OracleDataReader dataReader = cmd.ExecuteReader();
+            String queryString = String.Format(@"SELECT * FROM DOCTORI WHERE codParafa = '{0}' AND CNP = '{1}'", codParafa, CNP);
+            StringBuilder errorMessages = new StringBuilder();
 
-                if (dataReader.HasRows)
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
                 {
-                    MessageBox.Show("LOGAT!");
+                    command.Connection.Open();
+                    OracleDataReader dataReader = command.ExecuteReader();
+
+                    if (dataReader.HasRows)
+                    {
+                        MessageBox.Show("LOGAT!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datele introduse nu sunt corecte!", "Date incorecte.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        textBoxParafa.Clear();
+                        textBoxCNP.Clear();
+                    }
                 }
-                else
+                catch (OracleException ex)
                 {
-                    MessageBox.Show("Datele introduse nu sunt corecte!", "Date incorecte.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxParafa.Clear();
-                    textBoxCNP.Clear();
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-                
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addDoctor addDoctor = new addDoctor();
+            addDoctor.Show();
+            this.Hide();
         }
     }
 }

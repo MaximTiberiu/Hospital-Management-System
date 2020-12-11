@@ -32,7 +32,6 @@ namespace Hospital_Management_System
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(doctorLogin));
             this.labelLogin = new System.Windows.Forms.Label();
             this.labelApp = new System.Windows.Forms.Label();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonDoctor = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@ namespace Hospital_Management_System
             this.textBoxParafa = new System.Windows.Forms.TextBox();
             this.labelCNP = new System.Windows.Forms.Label();
             this.labelParafa = new System.Windows.Forms.Label();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,17 +67,6 @@ namespace Hospital_Management_System
             this.labelApp.Text = "Sistemul de Management al Spitalelor";
             this.labelApp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBoxLogo.Image = global::Hospital_Management_System.Properties.Resources.logo;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 419);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(985, 143);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 4;
-            this.pictureBoxLogo.TabStop = false;
-            // 
             // buttonDoctor
             // 
             this.buttonDoctor.BackColor = System.Drawing.Color.PowderBlue;
@@ -100,6 +89,7 @@ namespace Hospital_Management_System
             this.button1.TabIndex = 6;
             this.button1.Text = "Adăugare Medic";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -147,9 +137,20 @@ namespace Hospital_Management_System
             this.labelParafa.ForeColor = System.Drawing.Color.OrangeRed;
             this.labelParafa.Location = new System.Drawing.Point(24, 248);
             this.labelParafa.Name = "labelParafa";
-            this.labelParafa.Size = new System.Drawing.Size(204, 48);
+            this.labelParafa.Size = new System.Drawing.Size(163, 38);
             this.labelParafa.TabIndex = 18;
             this.labelParafa.Text = "Cod Parafă:";
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBoxLogo.Image = global::Hospital_Management_System.Properties.Resources.logo;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 419);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(985, 143);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 4;
+            this.pictureBoxLogo.TabStop = false;
             // 
             // doctorLogin
             // 

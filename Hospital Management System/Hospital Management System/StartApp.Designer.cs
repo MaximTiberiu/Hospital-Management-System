@@ -32,10 +32,11 @@ namespace Hospital_Management_System
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartApp));
             this.labelApp = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonPatient = new System.Windows.Forms.Button();
             this.buttonDoctor = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,17 +63,6 @@ namespace Hospital_Management_System
             this.labelLogin.TabIndex = 1;
             this.labelLogin.Text = "Autentificare";
             this.labelLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBoxLogo.Image = global::Hospital_Management_System.Properties.Resources.logo;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 429);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(985, 133);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 2;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // buttonPatient
             // 
@@ -110,6 +100,29 @@ namespace Hospital_Management_System
             this.buttonExit.UseVisualStyleBackColor = false;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.CadetBlue;
+            this.linkLabel1.Location = new System.Drawing.Point(904, 536);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(80, 17);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Sunt Admin";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBoxLogo.Image = global::Hospital_Management_System.Properties.Resources.logo;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 429);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(985, 133);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 2;
+            this.pictureBoxLogo.TabStop = false;
+            // 
             // StartApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -117,6 +130,7 @@ namespace Hospital_Management_System
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(985, 562);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonDoctor);
             this.Controls.Add(this.buttonPatient);
@@ -132,6 +146,7 @@ namespace Hospital_Management_System
             this.Text = "Hospital Management System";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -143,5 +158,6 @@ namespace Hospital_Management_System
         private System.Windows.Forms.Button buttonPatient;
         private System.Windows.Forms.Button buttonDoctor;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
