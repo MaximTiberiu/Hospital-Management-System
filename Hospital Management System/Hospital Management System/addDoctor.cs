@@ -270,7 +270,7 @@ namespace Hospital_Management_System
                 MessageBox.Show("CNP este un număr de 13 cifre. Vă rugăm să tastați din nou!", "Lungime greșită.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+           
             if (doctorLogin.isAllDigits(textBoxTelefon) || doctorLogin.hasCorrectLength(textBoxTelefon, 10))
             {
                 textBoxTelefon.Clear();
