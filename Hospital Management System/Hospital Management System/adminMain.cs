@@ -42,6 +42,8 @@ namespace Hospital_Management_System
             panelLocalitati.Visible = false;
             panelSpitale.SendToBack();
             panelSpitale.Visible = false;
+            panelSectiiSpitale.SendToBack();
+            panelSectiiSpitale.Visible = false;
             /* panelMedicamente.Visible = false;
              panelPacienti.Visible = false;
              panelDoctori.Visible = false;
@@ -108,9 +110,11 @@ namespace Hospital_Management_System
 
         private void loadComboSortJudete()
         {
+            comboBoxColoaneJudete.Items.Clear();
             comboBoxColoaneJudete.Items.Add("codJudet");
             comboBoxColoaneJudete.Items.Add("numeJudet");
 
+            comboBoxOrdineJudete.Items.Clear();
             comboBoxOrdineJudete.Items.Add("Ascendent");
             comboBoxOrdineJudete.Items.Add("Descendent");
         }
@@ -202,7 +206,6 @@ namespace Hospital_Management_System
         private void pictureBoxCancelJudete_Click(object sender, EventArgs e)
         {
             textBoxnumeJudet.Undo();
-            //textBoxnumeJudet.Text = undoName.GetLastChange();
             pictureBoxCheckJudete.Visible = false;
             pictureBoxCancelJudete.Visible = false;
             textBoxnumeJudet.Enabled = false;
@@ -629,7 +632,7 @@ namespace Hospital_Management_System
             {
                 OracleCommand command = new OracleCommand(queryString, connection);
                 try
-                {   switch(MessageBox.Show("Stergerea acestei localități poate duce la ștergerea unor date care au legătură cu respectiva intrare. Continuați?", 
+                {   switch(MessageBox.Show("Stergerea acestei localități poate duce la ștergerea sau modificarea unor date care au legătură cu respectiva intrare. Continuați?", 
                         "ATENȚIE", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))
                     {
                         case DialogResult.Yes:
@@ -750,10 +753,12 @@ namespace Hospital_Management_System
 
         private void loadComboSortSpitale()
         {
+            comboBoxColoaneSpitale.Items.Clear();
             comboBoxColoaneSpitale.Items.Add("idSpital");
             comboBoxColoaneSpitale.Items.Add("numeSpital");
             comboBoxColoaneSpitale.Items.Add("idLocalitate");
 
+            comboBoxOrdineSpitale.Items.Clear();
             comboBoxOrdineSpitale.Items.Add("Ascendent");
             comboBoxOrdineSpitale.Items.Add("Descendent");
         }
@@ -1039,7 +1044,7 @@ namespace Hospital_Management_System
                 OracleCommand command = new OracleCommand(queryString, connection);
                 try
                 {
-                    switch (MessageBox.Show("Stergerea acestui spital poate duce la ștergerea unor date care au legătură cu respectiva intrare. Continuați?",
+                    switch (MessageBox.Show("Stergerea acestui spital poate duce la ștergerea sau modificarea unor date care au legătură cu respectiva intrare. Continuați?",
                         "ATENȚIE", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))
                     {
                         case DialogResult.Yes:
@@ -1129,12 +1134,470 @@ namespace Hospital_Management_System
         }
         #endregion
 
-        #region altele
+        #region SECTII SPITALE
+        private void loadSectiiSpitale()
+        {
+            String queryString = String.Format(@"SELECT * FROM SECTII_SPITALE ORDER BY idSpital ASC");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewSectiiSpitale.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewSectiiSpitale);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void loadComboSortSectiiSpitale()
+        {
+            comboBoxColoaneSectiiSpitale.Items.Clear();
+            comboBoxColoaneSectiiSpitale.Items.Add("idSectie");
+            comboBoxColoaneSectiiSpitale.Items.Add("idSpital");
+            comboBoxColoaneSectiiSpitale.Items.Add("codSectie");
+
+            comboBoxOrdineSectiiSpitale.Items.Clear();
+            comboBoxOrdineSectiiSpitale.Items.Add("Ascendent");
+            comboBoxOrdineSectiiSpitale.Items.Add("Descendent");
+        }
+
         private void buttonSectiiSpitale_Click(object sender, EventArgs e)
         {
+            // initializations
             hidePanels();
-            //panelSectiiSpitale.Visible = true;
+            panelSectiiSpitale.Visible = true;
+            panelSectiiSpitale.BringToFront();
+            textBoxidSpital.Enabled = false;
+            textBoxcodSectie.Enabled = false;
+            textBoxCorp.Enabled = false;
+            textBoxEtaj.Enabled = false;
+            textBoxTelefonSectie.Enabled = false;
+            textBoxEmailSectie.Enabled = false;
+            labelidSectie_print.Text = "";
+
+            pictureBoxCheckSectiiSpitale.Visible = false;
+            pictureBoxCancelSectiiSpitale.Visible = false;
+
+            // load data
+            loadSectiiSpitale();
+            loadComboSortSectiiSpitale();
         }
+
+        private void dataGridViewSectiiSpitale_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewSectiiSpitale.Rows[index];
+            labelidSectie_print.Text = selectedRow.Cells[0].Value.ToString();
+            textBoxidSpital.Text = selectedRow.Cells[1].Value.ToString();
+            textBoxcodSectie.Text = selectedRow.Cells[2].Value.ToString();
+            
+            if(selectedRow.Cells[3].Value == null)
+                textBoxCorp.Text = "";
+            else
+                textBoxCorp.Text = selectedRow.Cells[3].Value.ToString();
+            textBoxEtaj.Text = selectedRow.Cells[4].Value.ToString();
+
+            if (selectedRow.Cells[5].Value == null)
+                textBoxTelefonSectie.Text = "";
+            else
+                textBoxTelefonSectie.Text = selectedRow.Cells[5].Value.ToString();
+
+            if (selectedRow.Cells[6].Value == null)
+                textBoxEmailSectie.Text = "";
+            else
+                textBoxEmailSectie.Text = selectedRow.Cells[6].Value.ToString();
+        }
+
+        private void buttonEditeazaSectiiSpitale_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = true;
+            if (textBoxidSpital.Text == "")
+            {
+                MessageBox.Show("Selectează o intrare!", "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                pictureBoxCheckSectiiSpitale.Visible = true;
+                pictureBoxCancelSectiiSpitale.Visible = true;
+                textBoxidSpital.Enabled = true;
+                textBoxcodSectie.Enabled = true;
+                textBoxCorp.Enabled = true;
+                textBoxEtaj.Enabled = true;
+                textBoxTelefonSectie.Enabled = true;
+                textBoxEmailSectie.Enabled = true;
+            }
+        }
+
+        private void buttonClearSectiiSpitale_Click(object sender, EventArgs e)
+        {
+            labelidSectie_print.Text = "";
+            textBoxidSpital.Text = "";
+            textBoxcodSectie.Text = "";
+            textBoxCorp.Text = "";
+            textBoxEtaj.Text = "";
+            textBoxTelefonSectie.Text = "";
+            textBoxEmailSectie.Text = "";
+        }
+
+        private void pictureBoxCheckSectiiSpitale_Click(object sender, EventArgs e)
+        {
+            if (addOrUpdate == true)
+            {
+                String queryString = String.Format(@"UPDATE SECTII_SPITALE 
+                                                    SET idSpital= :newidSpital,
+                                                        codSectie = :newCodSectie,
+                                                        corp = :newCorp,
+                                                        etaj = :newEtaj,
+                                                        telefon = :newTelefon,
+                                                        email = :newSpital
+                                                    WHERE idSectie = " + labelidSectie_print.Text);
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newidSpital", textBoxidSpital.Text);
+                        command.Parameters.Add("newCodSectie", textBoxcodSectie.Text);
+                        
+                        if (textBoxCorp.Text == "")
+                            command.Parameters.Add("newCorp", null);
+                        else
+                            command.Parameters.Add("newCorp", textBoxCorp.Text);
+                        command.Parameters.Add("newEtaj", textBoxEtaj.Text);
+
+                        if (textBoxTelefonSectie.Text == "")
+                            command.Parameters.Add("newTelefon", null);
+                        else
+                            command.Parameters.Add("newTelefon", textBoxTelefonSectie.Text);
+
+                        if (textBoxEmailSectie.Text == "")
+                            command.Parameters.Add("newEmail", null);
+                        else
+                            command.Parameters.Add("newEmail", textBoxEmailSectie.Text);
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date actualizate cu succes!", "Update.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadSectiiSpitale();
+                            pictureBoxCheckSectiiSpitale.Visible = false;
+                            pictureBoxCancelSectiiSpitale.Visible = false;
+                            textBoxidSpital.Enabled = false;
+                            textBoxcodSectie.Enabled = false;
+                            textBoxCorp.Enabled = false;
+                            textBoxEtaj.Enabled = false;
+                            textBoxTelefonSectie.Enabled = false;
+                            textBoxEmailSectie.Enabled = false;
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                String queryString = String.Format(@"INSERT INTO SECTII_SPITALE(idSectie, idSpital, codSectie, corp, etaj, telefon, email)
+                                                     VALUES ( :newidSectie, :newidSpital, :newCodSectie, :newCorp, :newEtaj, :newTelefon, :newEmail)");
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newidSectie", labelidSectie_print.Text);
+                        command.Parameters.Add("newidSpital", textBoxidSpital.Text);
+                        command.Parameters.Add("newCodSectie", textBoxcodSectie.Text);
+                        
+                        if(textBoxCorp.Text == "")
+                            command.Parameters.Add("newCorp", null);
+                        else
+                            command.Parameters.Add("newCorp", textBoxCorp.Text);
+                        command.Parameters.Add("newEtaj", textBoxEtaj.Text);
+                        
+                        if(textBoxTelefonSectie.Text == "")
+                            command.Parameters.Add("newTelefon", null);
+                        else
+                            command.Parameters.Add("newTelefon", textBoxTelefonSectie.Text);
+
+                        if(textBoxEmailSectie.Text == "")
+                            command.Parameters.Add("newEmail", null);
+                        else
+                            command.Parameters.Add("newEmail", textBoxEmailSectie.Text);
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date inserate cu succes!", "Insert.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadSectiiSpitale();
+                            pictureBoxCheckSectiiSpitale.Visible = false;
+                            pictureBoxCancelSectiiSpitale.Visible = false;
+                            textBoxidSpital.Enabled = false;
+                            textBoxcodSectie.Enabled = false;
+                            textBoxCorp.Enabled = false;
+                            textBoxEtaj.Enabled = false;
+                            textBoxTelefonSectie.Enabled = false;
+                            textBoxEmailSectie.Enabled = false;
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+        }
+
+        private void pictureBoxCancelSectiiSpitale_Click(object sender, EventArgs e)
+        {
+            textBoxidSpital.Undo();
+            textBoxcodSectie.Undo();
+            textBoxCorp.Undo();
+            textBoxEtaj.Undo();
+            textBoxTelefonSectie.Undo();
+            textBoxEmailSectie.Undo();
+
+            pictureBoxCheckSectiiSpitale.Visible = false;
+            pictureBoxCancelSectiiSpitale.Visible = false;
+            textBoxidSpital.Enabled = false;
+            textBoxcodSectie.Enabled = false;
+            textBoxCorp.Enabled = false;
+            textBoxEtaj.Enabled = false;
+            textBoxTelefonSectie.Enabled = false;
+            textBoxEmailSectie.Enabled = false;
+        }
+
+        private void comboBoxColoaneSectiiSpitale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"SELECT * FROM SECTII_SPITALE ORDER BY " + comboBoxColoaneSectiiSpitale.SelectedItem.ToString());
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewSectiiSpitale.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewSectiiSpitale);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void comboBoxOrdineSectiiSpitale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ord;
+            if (comboBoxOrdineSectiiSpitale.SelectedIndex == 0)
+            {
+                ord = "ASC";
+            }
+            else
+            {
+                ord = "DESC";
+            }
+
+            String queryString = String.Format(@"SELECT * FROM SECTII_SPITALE ORDER BY " + comboBoxColoaneSectiiSpitale.SelectedItem.ToString() + " " + ord);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewSectiiSpitale.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewSectiiSpitale);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonStergeSectiiSpitale_Click(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"DELETE FROM SECTII_SPITALE
+                                                WHERE idSectie = " + labelidSectie_print.Text);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    switch (MessageBox.Show("Stergerea acestei sectii poate duce la ștergerea sau modificarea unor date care au legătură cu respectiva intrare. Continuați?",
+                        "ATENȚIE", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))
+                    {
+                        case DialogResult.Yes:
+                            {
+                                command.Connection.Open();
+                                int rowsUpdated = command.ExecuteNonQuery();
+
+                                if (rowsUpdated > 0)
+                                {
+                                    MessageBox.Show("Date șterse cu succes!", "Delete.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    loadSectiiSpitale();
+                                    pictureBoxCheckSectiiSpitale.Visible = false;
+                                    pictureBoxCancelSectiiSpitale.Visible = false;
+                                    textBoxidSpital.Enabled = false;
+                                    textBoxcodSectie.Enabled = false;
+                                    textBoxCorp.Enabled = false;
+                                    textBoxEtaj.Enabled = false;
+                                    textBoxTelefonSectie.Enabled = false;
+                                    textBoxEmailSectie.Enabled = false;
+
+                                    labelidSectie_print.Text = "";
+                                    textBoxidSpital.Text = "";
+                                    textBoxcodSectie.Text = "";
+                                    textBoxCorp.Text = "";
+                                    textBoxEtaj.Text = "";
+                                    textBoxTelefonSectie.Text = "";
+                                    textBoxEmailSectie.Text = "";
+                                }
+                                break;
+                            }
+                        case DialogResult.No:
+                        case DialogResult.Cancel: { break; }
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonAdaugaSectiiSpitale_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = false;
+            pictureBoxCheckSectiiSpitale.Visible = true;
+            pictureBoxCancelSectiiSpitale.Visible = true;
+            textBoxidSpital.Enabled = true;
+            textBoxcodSectie.Enabled = true;
+            textBoxCorp.Enabled = true;
+            textBoxEtaj.Enabled = true;
+            textBoxTelefonSectie.Enabled = true;
+            textBoxEmailSectie.Enabled = true;
+
+            labelidSectie_print.Text = "";
+            textBoxidSpital.Text = "";
+            textBoxcodSectie.Text = "";
+            textBoxCorp.Text = "";
+            textBoxEtaj.Text = "";
+            textBoxTelefonSectie.Text = "";
+            textBoxEmailSectie.Text = "";
+
+            String queryString = String.Format(@"SELECT SECTII_SPITALE_idSectie_SEQ.NEXTVAL FROM DUAL");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    labelidSectie_print.Text = command.ExecuteScalar().ToString();
+
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        #endregion
+
+        #region altele
 
         private void buttonDoctori_Click(object sender, EventArgs e)
         {
