@@ -62,36 +62,6 @@ namespace Hospital_Management_System
             this.pictureBoxCheckJudete = new System.Windows.Forms.PictureBox();
             this.pictureBoxCancelJudete = new System.Windows.Forms.PictureBox();
             this.panelLocalitati = new System.Windows.Forms.Panel();
-            this.panelSectiiSpitale = new System.Windows.Forms.Panel();
-            this.labelEmailSectie = new System.Windows.Forms.Label();
-            this.labelTelefonSectie = new System.Windows.Forms.Label();
-            this.labelEtaj = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.labelidSectie_print = new System.Windows.Forms.Label();
-            this.textBoxcodSectie = new System.Windows.Forms.TextBox();
-            this.labelCorp = new System.Windows.Forms.Label();
-            this.labelcodSectie = new System.Windows.Forms.Label();
-            this.pictureBoxCancelSectiiSpitale = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCheckSectiiSpitale = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.labelInfoSectiiSpitale = new System.Windows.Forms.Label();
-            this.buttonClearSectiiSpitale = new System.Windows.Forms.Button();
-            this.comboBoxOrdineSectiiSpitale = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBoxColoaneSectiiSpitale = new System.Windows.Forms.ComboBox();
-            this.buttonEditeazaSectiiSpitale = new System.Windows.Forms.Button();
-            this.buttonAdaugaSectiiSpitale = new System.Windows.Forms.Button();
-            this.buttonStergeSectiiSpitale = new System.Windows.Forms.Button();
-            this.textBoxidSpital = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.labelidSpital_FK = new System.Windows.Forms.Label();
-            this.labelidSectie = new System.Windows.Forms.Label();
-            this.dataGridViewSectiiSpitale = new System.Windows.Forms.DataGridView();
-            this.buttonFiltruLocalitati = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkedListBoxJudete = new System.Windows.Forms.CheckedListBox();
             this.labelcodPostal_print = new System.Windows.Forms.Label();
             this.labelidLocalitate_print = new System.Windows.Forms.Label();
             this.textBoxcodJudet = new System.Windows.Forms.TextBox();
@@ -113,6 +83,52 @@ namespace Hospital_Management_System
             this.labelnumeLocalitate = new System.Windows.Forms.Label();
             this.labelidLocalitate = new System.Windows.Forms.Label();
             this.dataGridViewLocalitati = new System.Windows.Forms.DataGridView();
+            this.panelSectiiSpitale = new System.Windows.Forms.Panel();
+            this.panelSectii = new System.Windows.Forms.Panel();
+            this.labelcodSectie_print = new System.Windows.Forms.Label();
+            this.pictureBoxCancelSectii = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCheckSectii = new System.Windows.Forms.PictureBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.labelInfoSectie = new System.Windows.Forms.Label();
+            this.buttonClearSectii = new System.Windows.Forms.Button();
+            this.comboBoxOrdineSectii = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.comboBoxColoaneSectii = new System.Windows.Forms.ComboBox();
+            this.buttonEditeazaSectii = new System.Windows.Forms.Button();
+            this.buttonAdaugaSectii = new System.Windows.Forms.Button();
+            this.buttonStergeSectii = new System.Windows.Forms.Button();
+            this.textBoxnumeSectie = new System.Windows.Forms.TextBox();
+            this.labelnumeSectie = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.dataGridViewSectii = new System.Windows.Forms.DataGridView();
+            this.textBoxEmailSectie = new System.Windows.Forms.TextBox();
+            this.textBoxTelefonSectie = new System.Windows.Forms.TextBox();
+            this.textBoxEtaj = new System.Windows.Forms.TextBox();
+            this.textBoxCorp = new System.Windows.Forms.TextBox();
+            this.labelEmailSectie = new System.Windows.Forms.Label();
+            this.labelTelefonSectie = new System.Windows.Forms.Label();
+            this.labelEtaj = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelidSectie_print = new System.Windows.Forms.Label();
+            this.textBoxcodSectie = new System.Windows.Forms.TextBox();
+            this.labelCorp = new System.Windows.Forms.Label();
+            this.labelcodSectie = new System.Windows.Forms.Label();
+            this.pictureBoxCancelSectiiSpitale = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCheckSectiiSpitale = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.labelInfoSectiiSpitale = new System.Windows.Forms.Label();
+            this.buttonClearSectiiSpitale = new System.Windows.Forms.Button();
+            this.comboBoxOrdineSectiiSpitale = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBoxColoaneSectiiSpitale = new System.Windows.Forms.ComboBox();
+            this.buttonEditeazaSectiiSpitale = new System.Windows.Forms.Button();
+            this.buttonAdaugaSectiiSpitale = new System.Windows.Forms.Button();
+            this.buttonStergeSectiiSpitale = new System.Windows.Forms.Button();
+            this.textBoxidSpital = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.labelidSpital_FK = new System.Windows.Forms.Label();
+            this.labelidSectie = new System.Windows.Forms.Label();
+            this.dataGridViewSectiiSpitale = new System.Windows.Forms.DataGridView();
             this.panelSpitale = new System.Windows.Forms.Panel();
             this.labelidSpital_print = new System.Windows.Forms.Label();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
@@ -144,22 +160,24 @@ namespace Hospital_Management_System
             this.labelidSpital = new System.Windows.Forms.Label();
             this.dataGridViewSpitale = new System.Windows.Forms.DataGridView();
             this.panelJudet = new System.Windows.Forms.Panel();
-            this.textBoxCorp = new System.Windows.Forms.TextBox();
-            this.textBoxEtaj = new System.Windows.Forms.TextBox();
-            this.textBoxTelefonSectie = new System.Windows.Forms.TextBox();
-            this.textBoxEmailSectie = new System.Windows.Forms.TextBox();
+            this.buttonSectii = new System.Windows.Forms.Button();
+            this.buttonFunctii = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJudete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckJudete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelJudete)).BeginInit();
             this.panelLocalitati.SuspendLayout();
-            this.panelSectiiSpitale.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSectiiSpitale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckSectiiSpitale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSectiiSpitale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelLocalitati)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckLocalitati)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLocalitati)).BeginInit();
+            this.panelSectiiSpitale.SuspendLayout();
+            this.panelSectii.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSectii)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckSectii)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSectii)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSectiiSpitale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckSectiiSpitale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSectiiSpitale)).BeginInit();
             this.panelSpitale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSpitale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckSpitale)).BeginInit();
@@ -196,7 +214,7 @@ namespace Hospital_Management_System
             this.buttonExit.BackColor = System.Drawing.Color.Pink;
             this.buttonExit.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonExit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonExit.Location = new System.Drawing.Point(0, 896);
+            this.buttonExit.Location = new System.Drawing.Point(0, 1016);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(272, 56);
             this.buttonExit.TabIndex = 24;
@@ -209,7 +227,7 @@ namespace Hospital_Management_System
             this.buttonBack1.BackColor = System.Drawing.Color.Pink;
             this.buttonBack1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBack1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonBack1.Location = new System.Drawing.Point(0, 840);
+            this.buttonBack1.Location = new System.Drawing.Point(0, 960);
             this.buttonBack1.Name = "buttonBack1";
             this.buttonBack1.Size = new System.Drawing.Size(272, 56);
             this.buttonBack1.TabIndex = 23;
@@ -261,7 +279,7 @@ namespace Hospital_Management_System
             this.buttonDoctori.BackColor = System.Drawing.Color.Honeydew;
             this.buttonDoctori.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDoctori.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonDoctori.Location = new System.Drawing.Point(0, 392);
+            this.buttonDoctori.Location = new System.Drawing.Point(0, 504);
             this.buttonDoctori.Name = "buttonDoctori";
             this.buttonDoctori.Size = new System.Drawing.Size(272, 56);
             this.buttonDoctori.TabIndex = 29;
@@ -274,7 +292,7 @@ namespace Hospital_Management_System
             this.buttonPacient.BackColor = System.Drawing.Color.Honeydew;
             this.buttonPacient.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPacient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonPacient.Location = new System.Drawing.Point(0, 448);
+            this.buttonPacient.Location = new System.Drawing.Point(0, 560);
             this.buttonPacient.Name = "buttonPacient";
             this.buttonPacient.Size = new System.Drawing.Size(272, 56);
             this.buttonPacient.TabIndex = 30;
@@ -287,7 +305,7 @@ namespace Hospital_Management_System
             this.buttonSimptome.BackColor = System.Drawing.Color.LemonChiffon;
             this.buttonSimptome.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSimptome.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonSimptome.Location = new System.Drawing.Point(0, 520);
+            this.buttonSimptome.Location = new System.Drawing.Point(0, 632);
             this.buttonSimptome.Name = "buttonSimptome";
             this.buttonSimptome.Size = new System.Drawing.Size(272, 56);
             this.buttonSimptome.TabIndex = 31;
@@ -300,7 +318,7 @@ namespace Hospital_Management_System
             this.buttonBoli.BackColor = System.Drawing.Color.LemonChiffon;
             this.buttonBoli.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBoli.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonBoli.Location = new System.Drawing.Point(0, 576);
+            this.buttonBoli.Location = new System.Drawing.Point(0, 688);
             this.buttonBoli.Name = "buttonBoli";
             this.buttonBoli.Size = new System.Drawing.Size(272, 56);
             this.buttonBoli.TabIndex = 32;
@@ -313,7 +331,7 @@ namespace Hospital_Management_System
             this.buttonTratamente.BackColor = System.Drawing.Color.LemonChiffon;
             this.buttonTratamente.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTratamente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonTratamente.Location = new System.Drawing.Point(0, 632);
+            this.buttonTratamente.Location = new System.Drawing.Point(0, 744);
             this.buttonTratamente.Name = "buttonTratamente";
             this.buttonTratamente.Size = new System.Drawing.Size(272, 56);
             this.buttonTratamente.TabIndex = 33;
@@ -326,7 +344,7 @@ namespace Hospital_Management_System
             this.buttonMedicamente.BackColor = System.Drawing.Color.LemonChiffon;
             this.buttonMedicamente.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMedicamente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonMedicamente.Location = new System.Drawing.Point(0, 688);
+            this.buttonMedicamente.Location = new System.Drawing.Point(0, 800);
             this.buttonMedicamente.Name = "buttonMedicamente";
             this.buttonMedicamente.Size = new System.Drawing.Size(272, 56);
             this.buttonMedicamente.TabIndex = 34;
@@ -544,9 +562,6 @@ namespace Hospital_Management_System
             // panelLocalitati
             // 
             this.panelLocalitati.BackColor = System.Drawing.Color.MistyRose;
-            this.panelLocalitati.Controls.Add(this.buttonFiltruLocalitati);
-            this.panelLocalitati.Controls.Add(this.label6);
-            this.panelLocalitati.Controls.Add(this.checkedListBoxJudete);
             this.panelLocalitati.Controls.Add(this.labelcodPostal_print);
             this.panelLocalitati.Controls.Add(this.labelidLocalitate_print);
             this.panelLocalitati.Controls.Add(this.textBoxcodJudet);
@@ -572,367 +587,6 @@ namespace Hospital_Management_System
             this.panelLocalitati.Name = "panelLocalitati";
             this.panelLocalitati.Size = new System.Drawing.Size(1984, 936);
             this.panelLocalitati.TabIndex = 47;
-            // 
-            // panelSectiiSpitale
-            // 
-            this.panelSectiiSpitale.BackColor = System.Drawing.Color.MistyRose;
-            this.panelSectiiSpitale.Controls.Add(this.textBoxEmailSectie);
-            this.panelSectiiSpitale.Controls.Add(this.textBoxTelefonSectie);
-            this.panelSectiiSpitale.Controls.Add(this.textBoxEtaj);
-            this.panelSectiiSpitale.Controls.Add(this.textBoxCorp);
-            this.panelSectiiSpitale.Controls.Add(this.labelEmailSectie);
-            this.panelSectiiSpitale.Controls.Add(this.labelTelefonSectie);
-            this.panelSectiiSpitale.Controls.Add(this.labelEtaj);
-            this.panelSectiiSpitale.Controls.Add(this.button1);
-            this.panelSectiiSpitale.Controls.Add(this.label7);
-            this.panelSectiiSpitale.Controls.Add(this.label12);
-            this.panelSectiiSpitale.Controls.Add(this.labelidSectie_print);
-            this.panelSectiiSpitale.Controls.Add(this.textBoxcodSectie);
-            this.panelSectiiSpitale.Controls.Add(this.labelCorp);
-            this.panelSectiiSpitale.Controls.Add(this.labelcodSectie);
-            this.panelSectiiSpitale.Controls.Add(this.pictureBoxCancelSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.pictureBoxCheckSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.label16);
-            this.panelSectiiSpitale.Controls.Add(this.labelInfoSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.buttonClearSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.comboBoxOrdineSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.label18);
-            this.panelSectiiSpitale.Controls.Add(this.comboBoxColoaneSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.buttonEditeazaSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.buttonAdaugaSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.buttonStergeSectiiSpitale);
-            this.panelSectiiSpitale.Controls.Add(this.textBoxidSpital);
-            this.panelSectiiSpitale.Controls.Add(this.label19);
-            this.panelSectiiSpitale.Controls.Add(this.labelidSpital_FK);
-            this.panelSectiiSpitale.Controls.Add(this.labelidSectie);
-            this.panelSectiiSpitale.Controls.Add(this.dataGridViewSectiiSpitale);
-            this.panelSectiiSpitale.Location = new System.Drawing.Point(272, 152);
-            this.panelSectiiSpitale.Name = "panelSectiiSpitale";
-            this.panelSectiiSpitale.Size = new System.Drawing.Size(1984, 936);
-            this.panelSectiiSpitale.TabIndex = 55;
-            // 
-            // labelEmailSectie
-            // 
-            this.labelEmailSectie.AutoSize = true;
-            this.labelEmailSectie.BackColor = System.Drawing.Color.Transparent;
-            this.labelEmailSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmailSectie.Location = new System.Drawing.Point(88, 344);
-            this.labelEmailSectie.Name = "labelEmailSectie";
-            this.labelEmailSectie.Size = new System.Drawing.Size(93, 38);
-            this.labelEmailSectie.TabIndex = 57;
-            this.labelEmailSectie.Text = "Email:";
-            // 
-            // labelTelefonSectie
-            // 
-            this.labelTelefonSectie.AutoSize = true;
-            this.labelTelefonSectie.BackColor = System.Drawing.Color.Transparent;
-            this.labelTelefonSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTelefonSectie.Location = new System.Drawing.Point(64, 296);
-            this.labelTelefonSectie.Name = "labelTelefonSectie";
-            this.labelTelefonSectie.Size = new System.Drawing.Size(116, 38);
-            this.labelTelefonSectie.TabIndex = 56;
-            this.labelTelefonSectie.Text = "Telefon:";
-            // 
-            // labelEtaj
-            // 
-            this.labelEtaj.AutoSize = true;
-            this.labelEtaj.BackColor = System.Drawing.Color.Transparent;
-            this.labelEtaj.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEtaj.Location = new System.Drawing.Point(112, 248);
-            this.labelEtaj.Name = "labelEtaj";
-            this.labelEtaj.Size = new System.Drawing.Size(71, 38);
-            this.labelEtaj.TabIndex = 55;
-            this.labelEtaj.Text = "Etaj:";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Maroon;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(152, 632);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(264, 56);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "Elimină Filtre";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(24, 640);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 38);
-            this.label7.TabIndex = 53;
-            this.label7.Text = "Filtrare:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(240, 152);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(0, 38);
-            this.label12.TabIndex = 51;
-            // 
-            // labelidSectie_print
-            // 
-            this.labelidSectie_print.AutoSize = true;
-            this.labelidSectie_print.BackColor = System.Drawing.Color.Transparent;
-            this.labelidSectie_print.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelidSectie_print.Location = new System.Drawing.Point(200, 56);
-            this.labelidSectie_print.Name = "labelidSectie_print";
-            this.labelidSectie_print.Size = new System.Drawing.Size(0, 38);
-            this.labelidSectie_print.TabIndex = 50;
-            // 
-            // textBoxcodSectie
-            // 
-            this.textBoxcodSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxcodSectie.Location = new System.Drawing.Point(192, 152);
-            this.textBoxcodSectie.Name = "textBoxcodSectie";
-            this.textBoxcodSectie.Size = new System.Drawing.Size(232, 39);
-            this.textBoxcodSectie.TabIndex = 49;
-            // 
-            // labelCorp
-            // 
-            this.labelCorp.AutoSize = true;
-            this.labelCorp.BackColor = System.Drawing.Color.Transparent;
-            this.labelCorp.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCorp.Location = new System.Drawing.Point(96, 200);
-            this.labelCorp.Name = "labelCorp";
-            this.labelCorp.Size = new System.Drawing.Size(85, 38);
-            this.labelCorp.TabIndex = 48;
-            this.labelCorp.Text = "Corp:";
-            // 
-            // labelcodSectie
-            // 
-            this.labelcodSectie.AutoSize = true;
-            this.labelcodSectie.BackColor = System.Drawing.Color.Transparent;
-            this.labelcodSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelcodSectie.Location = new System.Drawing.Point(40, 152);
-            this.labelcodSectie.Name = "labelcodSectie";
-            this.labelcodSectie.Size = new System.Drawing.Size(146, 38);
-            this.labelcodSectie.TabIndex = 47;
-            this.labelcodSectie.Text = "codSectie:";
-            // 
-            // pictureBoxCancelSectiiSpitale
-            // 
-            this.pictureBoxCancelSectiiSpitale.Image = global::Hospital_Management_System.Properties.Resources.cancel;
-            this.pictureBoxCancelSectiiSpitale.Location = new System.Drawing.Point(696, 856);
-            this.pictureBoxCancelSectiiSpitale.Name = "pictureBoxCancelSectiiSpitale";
-            this.pictureBoxCancelSectiiSpitale.Size = new System.Drawing.Size(56, 56);
-            this.pictureBoxCancelSectiiSpitale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCancelSectiiSpitale.TabIndex = 46;
-            this.pictureBoxCancelSectiiSpitale.TabStop = false;
-            this.pictureBoxCancelSectiiSpitale.Click += new System.EventHandler(this.pictureBoxCancelSectiiSpitale_Click);
-            // 
-            // pictureBoxCheckSectiiSpitale
-            // 
-            this.pictureBoxCheckSectiiSpitale.Image = global::Hospital_Management_System.Properties.Resources.check;
-            this.pictureBoxCheckSectiiSpitale.Location = new System.Drawing.Point(696, 800);
-            this.pictureBoxCheckSectiiSpitale.Name = "pictureBoxCheckSectiiSpitale";
-            this.pictureBoxCheckSectiiSpitale.Size = new System.Drawing.Size(56, 56);
-            this.pictureBoxCheckSectiiSpitale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCheckSectiiSpitale.TabIndex = 45;
-            this.pictureBoxCheckSectiiSpitale.TabStop = false;
-            this.pictureBoxCheckSectiiSpitale.Click += new System.EventHandler(this.pictureBoxCheckSectiiSpitale_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(176, 56);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(0, 38);
-            this.label16.TabIndex = 44;
-            // 
-            // labelInfoSectiiSpitale
-            // 
-            this.labelInfoSectiiSpitale.AutoSize = true;
-            this.labelInfoSectiiSpitale.ForeColor = System.Drawing.Color.Maroon;
-            this.labelInfoSectiiSpitale.Location = new System.Drawing.Point(24, 8);
-            this.labelInfoSectiiSpitale.Name = "labelInfoSectiiSpitale";
-            this.labelInfoSectiiSpitale.Size = new System.Drawing.Size(388, 17);
-            this.labelInfoSectiiSpitale.TabIndex = 43;
-            this.labelInfoSectiiSpitale.Text = "Pentru a edita o secție, selectați o secție din partea dreaptă.";
-            // 
-            // buttonClearSectiiSpitale
-            // 
-            this.buttonClearSectiiSpitale.BackColor = System.Drawing.Color.Maroon;
-            this.buttonClearSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClearSectiiSpitale.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonClearSectiiSpitale.Location = new System.Drawing.Point(520, 856);
-            this.buttonClearSectiiSpitale.Name = "buttonClearSectiiSpitale";
-            this.buttonClearSectiiSpitale.Size = new System.Drawing.Size(168, 56);
-            this.buttonClearSectiiSpitale.TabIndex = 42;
-            this.buttonClearSectiiSpitale.Text = "Clear";
-            this.buttonClearSectiiSpitale.UseVisualStyleBackColor = false;
-            this.buttonClearSectiiSpitale.Click += new System.EventHandler(this.buttonClearSectiiSpitale_Click);
-            // 
-            // comboBoxOrdineSectiiSpitale
-            // 
-            this.comboBoxOrdineSectiiSpitale.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxOrdineSectiiSpitale.FormattingEnabled = true;
-            this.comboBoxOrdineSectiiSpitale.Location = new System.Drawing.Point(8, 864);
-            this.comboBoxOrdineSectiiSpitale.Name = "comboBoxOrdineSectiiSpitale";
-            this.comboBoxOrdineSectiiSpitale.Size = new System.Drawing.Size(328, 45);
-            this.comboBoxOrdineSectiiSpitale.TabIndex = 41;
-            this.comboBoxOrdineSectiiSpitale.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrdineSectiiSpitale_SelectedIndexChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(8, 760);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(208, 38);
-            this.label18.TabIndex = 40;
-            this.label18.Text = "Sortează după:";
-            // 
-            // comboBoxColoaneSectiiSpitale
-            // 
-            this.comboBoxColoaneSectiiSpitale.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxColoaneSectiiSpitale.FormattingEnabled = true;
-            this.comboBoxColoaneSectiiSpitale.Location = new System.Drawing.Point(8, 808);
-            this.comboBoxColoaneSectiiSpitale.Name = "comboBoxColoaneSectiiSpitale";
-            this.comboBoxColoaneSectiiSpitale.Size = new System.Drawing.Size(328, 45);
-            this.comboBoxColoaneSectiiSpitale.TabIndex = 39;
-            this.comboBoxColoaneSectiiSpitale.SelectedIndexChanged += new System.EventHandler(this.comboBoxColoaneSectiiSpitale_SelectedIndexChanged);
-            // 
-            // buttonEditeazaSectiiSpitale
-            // 
-            this.buttonEditeazaSectiiSpitale.BackColor = System.Drawing.Color.Yellow;
-            this.buttonEditeazaSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEditeazaSectiiSpitale.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonEditeazaSectiiSpitale.Location = new System.Drawing.Point(520, 800);
-            this.buttonEditeazaSectiiSpitale.Name = "buttonEditeazaSectiiSpitale";
-            this.buttonEditeazaSectiiSpitale.Size = new System.Drawing.Size(168, 56);
-            this.buttonEditeazaSectiiSpitale.TabIndex = 38;
-            this.buttonEditeazaSectiiSpitale.Text = "Editează";
-            this.buttonEditeazaSectiiSpitale.UseVisualStyleBackColor = false;
-            this.buttonEditeazaSectiiSpitale.Click += new System.EventHandler(this.buttonEditeazaSectiiSpitale_Click);
-            // 
-            // buttonAdaugaSectiiSpitale
-            // 
-            this.buttonAdaugaSectiiSpitale.BackColor = System.Drawing.Color.Green;
-            this.buttonAdaugaSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdaugaSectiiSpitale.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonAdaugaSectiiSpitale.Location = new System.Drawing.Point(344, 800);
-            this.buttonAdaugaSectiiSpitale.Name = "buttonAdaugaSectiiSpitale";
-            this.buttonAdaugaSectiiSpitale.Size = new System.Drawing.Size(168, 56);
-            this.buttonAdaugaSectiiSpitale.TabIndex = 37;
-            this.buttonAdaugaSectiiSpitale.Text = "Adaugă";
-            this.buttonAdaugaSectiiSpitale.UseVisualStyleBackColor = false;
-            this.buttonAdaugaSectiiSpitale.Click += new System.EventHandler(this.buttonAdaugaSectiiSpitale_Click);
-            // 
-            // buttonStergeSectiiSpitale
-            // 
-            this.buttonStergeSectiiSpitale.BackColor = System.Drawing.Color.Red;
-            this.buttonStergeSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStergeSectiiSpitale.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonStergeSectiiSpitale.Location = new System.Drawing.Point(344, 856);
-            this.buttonStergeSectiiSpitale.Name = "buttonStergeSectiiSpitale";
-            this.buttonStergeSectiiSpitale.Size = new System.Drawing.Size(168, 56);
-            this.buttonStergeSectiiSpitale.TabIndex = 36;
-            this.buttonStergeSectiiSpitale.Text = "Șterge";
-            this.buttonStergeSectiiSpitale.UseVisualStyleBackColor = false;
-            this.buttonStergeSectiiSpitale.Click += new System.EventHandler(this.buttonStergeSectiiSpitale_Click);
-            // 
-            // textBoxidSpital
-            // 
-            this.textBoxidSpital.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxidSpital.Location = new System.Drawing.Point(192, 104);
-            this.textBoxidSpital.Name = "textBoxidSpital";
-            this.textBoxidSpital.Size = new System.Drawing.Size(232, 39);
-            this.textBoxidSpital.TabIndex = 8;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.label19.Location = new System.Drawing.Point(248, 168);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(0, 32);
-            this.label19.TabIndex = 7;
-            // 
-            // labelidSpital_FK
-            // 
-            this.labelidSpital_FK.AutoSize = true;
-            this.labelidSpital_FK.BackColor = System.Drawing.Color.Transparent;
-            this.labelidSpital_FK.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelidSpital_FK.Location = new System.Drawing.Point(72, 104);
-            this.labelidSpital_FK.Name = "labelidSpital_FK";
-            this.labelidSpital_FK.Size = new System.Drawing.Size(119, 38);
-            this.labelidSpital_FK.TabIndex = 4;
-            this.labelidSpital_FK.Text = "idSpital:";
-            // 
-            // labelidSectie
-            // 
-            this.labelidSectie.AutoSize = true;
-            this.labelidSectie.BackColor = System.Drawing.Color.Transparent;
-            this.labelidSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelidSectie.Location = new System.Drawing.Point(64, 56);
-            this.labelidSectie.Name = "labelidSectie";
-            this.labelidSectie.Size = new System.Drawing.Size(123, 38);
-            this.labelidSectie.TabIndex = 3;
-            this.labelidSectie.Text = "idSectie:";
-            // 
-            // dataGridViewSectiiSpitale
-            // 
-            this.dataGridViewSectiiSpitale.AllowUserToAddRows = false;
-            this.dataGridViewSectiiSpitale.AllowUserToDeleteRows = false;
-            this.dataGridViewSectiiSpitale.AllowUserToResizeColumns = false;
-            this.dataGridViewSectiiSpitale.AllowUserToResizeRows = false;
-            this.dataGridViewSectiiSpitale.BackgroundColor = System.Drawing.Color.Azure;
-            this.dataGridViewSectiiSpitale.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridViewSectiiSpitale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSectiiSpitale.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dataGridViewSectiiSpitale.Location = new System.Drawing.Point(832, 8);
-            this.dataGridViewSectiiSpitale.Name = "dataGridViewSectiiSpitale";
-            this.dataGridViewSectiiSpitale.ReadOnly = true;
-            this.dataGridViewSectiiSpitale.RowHeadersWidth = 51;
-            this.dataGridViewSectiiSpitale.RowTemplate.Height = 24;
-            this.dataGridViewSectiiSpitale.Size = new System.Drawing.Size(1144, 920);
-            this.dataGridViewSectiiSpitale.TabIndex = 2;
-            this.dataGridViewSectiiSpitale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSectiiSpitale_CellClick);
-            // 
-            // buttonFiltruLocalitati
-            // 
-            this.buttonFiltruLocalitati.BackColor = System.Drawing.Color.Maroon;
-            this.buttonFiltruLocalitati.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFiltruLocalitati.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonFiltruLocalitati.Location = new System.Drawing.Point(144, 272);
-            this.buttonFiltruLocalitati.Name = "buttonFiltruLocalitati";
-            this.buttonFiltruLocalitati.Size = new System.Drawing.Size(264, 56);
-            this.buttonFiltruLocalitati.TabIndex = 54;
-            this.buttonFiltruLocalitati.Text = "Elimină Filtre";
-            this.buttonFiltruLocalitati.UseVisualStyleBackColor = false;
-            this.buttonFiltruLocalitati.Click += new System.EventHandler(this.buttonFiltruLocalitati_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 280);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 38);
-            this.label6.TabIndex = 53;
-            this.label6.Text = "Filtrare:";
-            // 
-            // checkedListBoxJudete
-            // 
-            this.checkedListBoxJudete.BackColor = System.Drawing.Color.Azure;
-            this.checkedListBoxJudete.FormattingEnabled = true;
-            this.checkedListBoxJudete.Location = new System.Drawing.Point(16, 336);
-            this.checkedListBoxJudete.Name = "checkedListBoxJudete";
-            this.checkedListBoxJudete.Size = new System.Drawing.Size(392, 395);
-            this.checkedListBoxJudete.TabIndex = 52;
             // 
             // labelcodPostal_print
             // 
@@ -1167,6 +821,550 @@ namespace Hospital_Management_System
             this.dataGridViewLocalitati.Size = new System.Drawing.Size(1144, 920);
             this.dataGridViewLocalitati.TabIndex = 2;
             this.dataGridViewLocalitati.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLocalitati_CellClick);
+            // 
+            // panelSectiiSpitale
+            // 
+            this.panelSectiiSpitale.BackColor = System.Drawing.Color.MistyRose;
+            this.panelSectiiSpitale.Controls.Add(this.textBoxEmailSectie);
+            this.panelSectiiSpitale.Controls.Add(this.textBoxTelefonSectie);
+            this.panelSectiiSpitale.Controls.Add(this.textBoxEtaj);
+            this.panelSectiiSpitale.Controls.Add(this.textBoxCorp);
+            this.panelSectiiSpitale.Controls.Add(this.labelEmailSectie);
+            this.panelSectiiSpitale.Controls.Add(this.labelTelefonSectie);
+            this.panelSectiiSpitale.Controls.Add(this.labelEtaj);
+            this.panelSectiiSpitale.Controls.Add(this.label12);
+            this.panelSectiiSpitale.Controls.Add(this.labelidSectie_print);
+            this.panelSectiiSpitale.Controls.Add(this.textBoxcodSectie);
+            this.panelSectiiSpitale.Controls.Add(this.labelCorp);
+            this.panelSectiiSpitale.Controls.Add(this.labelcodSectie);
+            this.panelSectiiSpitale.Controls.Add(this.pictureBoxCancelSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.pictureBoxCheckSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.label16);
+            this.panelSectiiSpitale.Controls.Add(this.labelInfoSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.buttonClearSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.comboBoxOrdineSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.label18);
+            this.panelSectiiSpitale.Controls.Add(this.comboBoxColoaneSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.buttonEditeazaSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.buttonAdaugaSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.buttonStergeSectiiSpitale);
+            this.panelSectiiSpitale.Controls.Add(this.textBoxidSpital);
+            this.panelSectiiSpitale.Controls.Add(this.label19);
+            this.panelSectiiSpitale.Controls.Add(this.labelidSpital_FK);
+            this.panelSectiiSpitale.Controls.Add(this.labelidSectie);
+            this.panelSectiiSpitale.Controls.Add(this.dataGridViewSectiiSpitale);
+            this.panelSectiiSpitale.Location = new System.Drawing.Point(272, 152);
+            this.panelSectiiSpitale.Name = "panelSectiiSpitale";
+            this.panelSectiiSpitale.Size = new System.Drawing.Size(1984, 936);
+            this.panelSectiiSpitale.TabIndex = 55;
+            // 
+            // panelSectii
+            // 
+            this.panelSectii.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelSectii.BackColor = System.Drawing.Color.MistyRose;
+            this.panelSectii.Controls.Add(this.labelcodSectie_print);
+            this.panelSectii.Controls.Add(this.pictureBoxCancelSectii);
+            this.panelSectii.Controls.Add(this.pictureBoxCheckSectii);
+            this.panelSectii.Controls.Add(this.label21);
+            this.panelSectii.Controls.Add(this.labelInfoSectie);
+            this.panelSectii.Controls.Add(this.buttonClearSectii);
+            this.panelSectii.Controls.Add(this.comboBoxOrdineSectii);
+            this.panelSectii.Controls.Add(this.label23);
+            this.panelSectii.Controls.Add(this.comboBoxColoaneSectii);
+            this.panelSectii.Controls.Add(this.buttonEditeazaSectii);
+            this.panelSectii.Controls.Add(this.buttonAdaugaSectii);
+            this.panelSectii.Controls.Add(this.buttonStergeSectii);
+            this.panelSectii.Controls.Add(this.textBoxnumeSectie);
+            this.panelSectii.Controls.Add(this.labelnumeSectie);
+            this.panelSectii.Controls.Add(this.label26);
+            this.panelSectii.Controls.Add(this.dataGridViewSectii);
+            this.panelSectii.Location = new System.Drawing.Point(272, 152);
+            this.panelSectii.Name = "panelSectii";
+            this.panelSectii.Size = new System.Drawing.Size(1984, 936);
+            this.panelSectii.TabIndex = 62;
+            // 
+            // labelcodSectie_print
+            // 
+            this.labelcodSectie_print.AutoSize = true;
+            this.labelcodSectie_print.BackColor = System.Drawing.Color.Transparent;
+            this.labelcodSectie_print.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelcodSectie_print.Location = new System.Drawing.Point(200, 56);
+            this.labelcodSectie_print.Name = "labelcodSectie_print";
+            this.labelcodSectie_print.Size = new System.Drawing.Size(0, 38);
+            this.labelcodSectie_print.TabIndex = 50;
+            // 
+            // pictureBoxCancelSectii
+            // 
+            this.pictureBoxCancelSectii.Image = global::Hospital_Management_System.Properties.Resources.cancel;
+            this.pictureBoxCancelSectii.Location = new System.Drawing.Point(696, 856);
+            this.pictureBoxCancelSectii.Name = "pictureBoxCancelSectii";
+            this.pictureBoxCancelSectii.Size = new System.Drawing.Size(56, 56);
+            this.pictureBoxCancelSectii.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCancelSectii.TabIndex = 46;
+            this.pictureBoxCancelSectii.TabStop = false;
+            this.pictureBoxCancelSectii.Click += new System.EventHandler(this.pictureBoxCancelSectii_Click);
+            // 
+            // pictureBoxCheckSectii
+            // 
+            this.pictureBoxCheckSectii.Image = global::Hospital_Management_System.Properties.Resources.check;
+            this.pictureBoxCheckSectii.Location = new System.Drawing.Point(696, 800);
+            this.pictureBoxCheckSectii.Name = "pictureBoxCheckSectii";
+            this.pictureBoxCheckSectii.Size = new System.Drawing.Size(56, 56);
+            this.pictureBoxCheckSectii.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCheckSectii.TabIndex = 45;
+            this.pictureBoxCheckSectii.TabStop = false;
+            this.pictureBoxCheckSectii.Click += new System.EventHandler(this.pictureBoxCheckSectii_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(176, 56);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(0, 38);
+            this.label21.TabIndex = 44;
+            // 
+            // labelInfoSectie
+            // 
+            this.labelInfoSectie.AutoSize = true;
+            this.labelInfoSectie.ForeColor = System.Drawing.Color.Maroon;
+            this.labelInfoSectie.Location = new System.Drawing.Point(24, 8);
+            this.labelInfoSectie.Name = "labelInfoSectie";
+            this.labelInfoSectie.Size = new System.Drawing.Size(388, 17);
+            this.labelInfoSectie.TabIndex = 43;
+            this.labelInfoSectie.Text = "Pentru a edita o secție, selectați o secție din partea dreaptă.";
+            // 
+            // buttonClearSectii
+            // 
+            this.buttonClearSectii.BackColor = System.Drawing.Color.Maroon;
+            this.buttonClearSectii.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClearSectii.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonClearSectii.Location = new System.Drawing.Point(520, 856);
+            this.buttonClearSectii.Name = "buttonClearSectii";
+            this.buttonClearSectii.Size = new System.Drawing.Size(168, 56);
+            this.buttonClearSectii.TabIndex = 42;
+            this.buttonClearSectii.Text = "Clear";
+            this.buttonClearSectii.UseVisualStyleBackColor = false;
+            this.buttonClearSectii.Click += new System.EventHandler(this.buttonClearSectii_Click);
+            // 
+            // comboBoxOrdineSectii
+            // 
+            this.comboBoxOrdineSectii.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxOrdineSectii.FormattingEnabled = true;
+            this.comboBoxOrdineSectii.Location = new System.Drawing.Point(8, 864);
+            this.comboBoxOrdineSectii.Name = "comboBoxOrdineSectii";
+            this.comboBoxOrdineSectii.Size = new System.Drawing.Size(328, 45);
+            this.comboBoxOrdineSectii.TabIndex = 41;
+            this.comboBoxOrdineSectii.SelectionChangeCommitted += new System.EventHandler(this.comboBoxOrdineSectii_SelectedIndexChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(8, 760);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(208, 38);
+            this.label23.TabIndex = 40;
+            this.label23.Text = "Sortează după:";
+            // 
+            // comboBoxColoaneSectii
+            // 
+            this.comboBoxColoaneSectii.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxColoaneSectii.FormattingEnabled = true;
+            this.comboBoxColoaneSectii.Location = new System.Drawing.Point(8, 808);
+            this.comboBoxColoaneSectii.Name = "comboBoxColoaneSectii";
+            this.comboBoxColoaneSectii.Size = new System.Drawing.Size(328, 45);
+            this.comboBoxColoaneSectii.TabIndex = 39;
+            this.comboBoxColoaneSectii.SelectedIndexChanged += new System.EventHandler(this.comboBoxColoaneSectii_SelectedIndexChanged);
+            // 
+            // buttonEditeazaSectii
+            // 
+            this.buttonEditeazaSectii.BackColor = System.Drawing.Color.Yellow;
+            this.buttonEditeazaSectii.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditeazaSectii.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonEditeazaSectii.Location = new System.Drawing.Point(520, 800);
+            this.buttonEditeazaSectii.Name = "buttonEditeazaSectii";
+            this.buttonEditeazaSectii.Size = new System.Drawing.Size(168, 56);
+            this.buttonEditeazaSectii.TabIndex = 38;
+            this.buttonEditeazaSectii.Text = "Editează";
+            this.buttonEditeazaSectii.UseVisualStyleBackColor = false;
+            this.buttonEditeazaSectii.Click += new System.EventHandler(this.buttonEditeazaSectii_Click);
+            // 
+            // buttonAdaugaSectii
+            // 
+            this.buttonAdaugaSectii.BackColor = System.Drawing.Color.Green;
+            this.buttonAdaugaSectii.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaSectii.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAdaugaSectii.Location = new System.Drawing.Point(344, 800);
+            this.buttonAdaugaSectii.Name = "buttonAdaugaSectii";
+            this.buttonAdaugaSectii.Size = new System.Drawing.Size(168, 56);
+            this.buttonAdaugaSectii.TabIndex = 37;
+            this.buttonAdaugaSectii.Text = "Adaugă";
+            this.buttonAdaugaSectii.UseVisualStyleBackColor = false;
+            this.buttonAdaugaSectii.Click += new System.EventHandler(this.buttonAdaugaSectii_Click);
+            // 
+            // buttonStergeSectii
+            // 
+            this.buttonStergeSectii.BackColor = System.Drawing.Color.Red;
+            this.buttonStergeSectii.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStergeSectii.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonStergeSectii.Location = new System.Drawing.Point(344, 856);
+            this.buttonStergeSectii.Name = "buttonStergeSectii";
+            this.buttonStergeSectii.Size = new System.Drawing.Size(168, 56);
+            this.buttonStergeSectii.TabIndex = 36;
+            this.buttonStergeSectii.Text = "Șterge";
+            this.buttonStergeSectii.UseVisualStyleBackColor = false;
+            this.buttonStergeSectii.Click += new System.EventHandler(this.buttonStergeSectii_Click);
+            // 
+            // textBoxnumeSectie
+            // 
+            this.textBoxnumeSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxnumeSectie.Location = new System.Drawing.Point(192, 104);
+            this.textBoxnumeSectie.Name = "textBoxnumeSectie";
+            this.textBoxnumeSectie.Size = new System.Drawing.Size(232, 39);
+            this.textBoxnumeSectie.TabIndex = 8;
+            // 
+            // labelnumeSectie
+            // 
+            this.labelnumeSectie.AutoSize = true;
+            this.labelnumeSectie.BackColor = System.Drawing.Color.Transparent;
+            this.labelnumeSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelnumeSectie.Location = new System.Drawing.Point(16, 104);
+            this.labelnumeSectie.Name = "labelnumeSectie";
+            this.labelnumeSectie.Size = new System.Drawing.Size(171, 38);
+            this.labelnumeSectie.TabIndex = 4;
+            this.labelnumeSectie.Text = "numeSectie:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(40, 56);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(146, 38);
+            this.label26.TabIndex = 3;
+            this.label26.Text = "codSectie:";
+            // 
+            // dataGridViewSectii
+            // 
+            this.dataGridViewSectii.AllowUserToAddRows = false;
+            this.dataGridViewSectii.AllowUserToDeleteRows = false;
+            this.dataGridViewSectii.AllowUserToResizeColumns = false;
+            this.dataGridViewSectii.AllowUserToResizeRows = false;
+            this.dataGridViewSectii.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridViewSectii.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewSectii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSectii.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataGridViewSectii.Location = new System.Drawing.Point(832, 8);
+            this.dataGridViewSectii.Name = "dataGridViewSectii";
+            this.dataGridViewSectii.ReadOnly = true;
+            this.dataGridViewSectii.RowHeadersWidth = 51;
+            this.dataGridViewSectii.RowTemplate.Height = 24;
+            this.dataGridViewSectii.Size = new System.Drawing.Size(1144, 920);
+            this.dataGridViewSectii.TabIndex = 2;
+            this.dataGridViewSectii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSectii_CellClick);
+            // 
+            // textBoxEmailSectie
+            // 
+            this.textBoxEmailSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxEmailSectie.Location = new System.Drawing.Point(192, 344);
+            this.textBoxEmailSectie.Name = "textBoxEmailSectie";
+            this.textBoxEmailSectie.Size = new System.Drawing.Size(232, 39);
+            this.textBoxEmailSectie.TabIndex = 61;
+            // 
+            // textBoxTelefonSectie
+            // 
+            this.textBoxTelefonSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxTelefonSectie.Location = new System.Drawing.Point(192, 296);
+            this.textBoxTelefonSectie.Name = "textBoxTelefonSectie";
+            this.textBoxTelefonSectie.Size = new System.Drawing.Size(232, 39);
+            this.textBoxTelefonSectie.TabIndex = 60;
+            // 
+            // textBoxEtaj
+            // 
+            this.textBoxEtaj.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxEtaj.Location = new System.Drawing.Point(192, 248);
+            this.textBoxEtaj.Name = "textBoxEtaj";
+            this.textBoxEtaj.Size = new System.Drawing.Size(232, 39);
+            this.textBoxEtaj.TabIndex = 59;
+            // 
+            // textBoxCorp
+            // 
+            this.textBoxCorp.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxCorp.Location = new System.Drawing.Point(192, 200);
+            this.textBoxCorp.Name = "textBoxCorp";
+            this.textBoxCorp.Size = new System.Drawing.Size(232, 39);
+            this.textBoxCorp.TabIndex = 58;
+            // 
+            // labelEmailSectie
+            // 
+            this.labelEmailSectie.AutoSize = true;
+            this.labelEmailSectie.BackColor = System.Drawing.Color.Transparent;
+            this.labelEmailSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmailSectie.Location = new System.Drawing.Point(88, 344);
+            this.labelEmailSectie.Name = "labelEmailSectie";
+            this.labelEmailSectie.Size = new System.Drawing.Size(93, 38);
+            this.labelEmailSectie.TabIndex = 57;
+            this.labelEmailSectie.Text = "Email:";
+            // 
+            // labelTelefonSectie
+            // 
+            this.labelTelefonSectie.AutoSize = true;
+            this.labelTelefonSectie.BackColor = System.Drawing.Color.Transparent;
+            this.labelTelefonSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTelefonSectie.Location = new System.Drawing.Point(64, 296);
+            this.labelTelefonSectie.Name = "labelTelefonSectie";
+            this.labelTelefonSectie.Size = new System.Drawing.Size(116, 38);
+            this.labelTelefonSectie.TabIndex = 56;
+            this.labelTelefonSectie.Text = "Telefon:";
+            // 
+            // labelEtaj
+            // 
+            this.labelEtaj.AutoSize = true;
+            this.labelEtaj.BackColor = System.Drawing.Color.Transparent;
+            this.labelEtaj.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEtaj.Location = new System.Drawing.Point(112, 248);
+            this.labelEtaj.Name = "labelEtaj";
+            this.labelEtaj.Size = new System.Drawing.Size(71, 38);
+            this.labelEtaj.TabIndex = 55;
+            this.labelEtaj.Text = "Etaj:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(240, 152);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 38);
+            this.label12.TabIndex = 51;
+            // 
+            // labelidSectie_print
+            // 
+            this.labelidSectie_print.AutoSize = true;
+            this.labelidSectie_print.BackColor = System.Drawing.Color.Transparent;
+            this.labelidSectie_print.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelidSectie_print.Location = new System.Drawing.Point(200, 56);
+            this.labelidSectie_print.Name = "labelidSectie_print";
+            this.labelidSectie_print.Size = new System.Drawing.Size(0, 38);
+            this.labelidSectie_print.TabIndex = 50;
+            // 
+            // textBoxcodSectie
+            // 
+            this.textBoxcodSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxcodSectie.Location = new System.Drawing.Point(192, 152);
+            this.textBoxcodSectie.Name = "textBoxcodSectie";
+            this.textBoxcodSectie.Size = new System.Drawing.Size(232, 39);
+            this.textBoxcodSectie.TabIndex = 49;
+            // 
+            // labelCorp
+            // 
+            this.labelCorp.AutoSize = true;
+            this.labelCorp.BackColor = System.Drawing.Color.Transparent;
+            this.labelCorp.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCorp.Location = new System.Drawing.Point(96, 200);
+            this.labelCorp.Name = "labelCorp";
+            this.labelCorp.Size = new System.Drawing.Size(85, 38);
+            this.labelCorp.TabIndex = 48;
+            this.labelCorp.Text = "Corp:";
+            // 
+            // labelcodSectie
+            // 
+            this.labelcodSectie.AutoSize = true;
+            this.labelcodSectie.BackColor = System.Drawing.Color.Transparent;
+            this.labelcodSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelcodSectie.Location = new System.Drawing.Point(40, 152);
+            this.labelcodSectie.Name = "labelcodSectie";
+            this.labelcodSectie.Size = new System.Drawing.Size(146, 38);
+            this.labelcodSectie.TabIndex = 47;
+            this.labelcodSectie.Text = "codSectie:";
+            // 
+            // pictureBoxCancelSectiiSpitale
+            // 
+            this.pictureBoxCancelSectiiSpitale.Image = global::Hospital_Management_System.Properties.Resources.cancel;
+            this.pictureBoxCancelSectiiSpitale.Location = new System.Drawing.Point(696, 856);
+            this.pictureBoxCancelSectiiSpitale.Name = "pictureBoxCancelSectiiSpitale";
+            this.pictureBoxCancelSectiiSpitale.Size = new System.Drawing.Size(56, 56);
+            this.pictureBoxCancelSectiiSpitale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCancelSectiiSpitale.TabIndex = 46;
+            this.pictureBoxCancelSectiiSpitale.TabStop = false;
+            this.pictureBoxCancelSectiiSpitale.Click += new System.EventHandler(this.pictureBoxCancelSectiiSpitale_Click);
+            // 
+            // pictureBoxCheckSectiiSpitale
+            // 
+            this.pictureBoxCheckSectiiSpitale.Image = global::Hospital_Management_System.Properties.Resources.check;
+            this.pictureBoxCheckSectiiSpitale.Location = new System.Drawing.Point(696, 800);
+            this.pictureBoxCheckSectiiSpitale.Name = "pictureBoxCheckSectiiSpitale";
+            this.pictureBoxCheckSectiiSpitale.Size = new System.Drawing.Size(56, 56);
+            this.pictureBoxCheckSectiiSpitale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCheckSectiiSpitale.TabIndex = 45;
+            this.pictureBoxCheckSectiiSpitale.TabStop = false;
+            this.pictureBoxCheckSectiiSpitale.Click += new System.EventHandler(this.pictureBoxCheckSectiiSpitale_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(176, 56);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(0, 38);
+            this.label16.TabIndex = 44;
+            // 
+            // labelInfoSectiiSpitale
+            // 
+            this.labelInfoSectiiSpitale.AutoSize = true;
+            this.labelInfoSectiiSpitale.ForeColor = System.Drawing.Color.Maroon;
+            this.labelInfoSectiiSpitale.Location = new System.Drawing.Point(24, 8);
+            this.labelInfoSectiiSpitale.Name = "labelInfoSectiiSpitale";
+            this.labelInfoSectiiSpitale.Size = new System.Drawing.Size(388, 17);
+            this.labelInfoSectiiSpitale.TabIndex = 43;
+            this.labelInfoSectiiSpitale.Text = "Pentru a edita o secție, selectați o secție din partea dreaptă.";
+            // 
+            // buttonClearSectiiSpitale
+            // 
+            this.buttonClearSectiiSpitale.BackColor = System.Drawing.Color.Maroon;
+            this.buttonClearSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClearSectiiSpitale.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonClearSectiiSpitale.Location = new System.Drawing.Point(520, 856);
+            this.buttonClearSectiiSpitale.Name = "buttonClearSectiiSpitale";
+            this.buttonClearSectiiSpitale.Size = new System.Drawing.Size(168, 56);
+            this.buttonClearSectiiSpitale.TabIndex = 42;
+            this.buttonClearSectiiSpitale.Text = "Clear";
+            this.buttonClearSectiiSpitale.UseVisualStyleBackColor = false;
+            this.buttonClearSectiiSpitale.Click += new System.EventHandler(this.buttonClearSectiiSpitale_Click);
+            // 
+            // comboBoxOrdineSectiiSpitale
+            // 
+            this.comboBoxOrdineSectiiSpitale.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxOrdineSectiiSpitale.FormattingEnabled = true;
+            this.comboBoxOrdineSectiiSpitale.Location = new System.Drawing.Point(8, 864);
+            this.comboBoxOrdineSectiiSpitale.Name = "comboBoxOrdineSectiiSpitale";
+            this.comboBoxOrdineSectiiSpitale.Size = new System.Drawing.Size(328, 45);
+            this.comboBoxOrdineSectiiSpitale.TabIndex = 41;
+            this.comboBoxOrdineSectiiSpitale.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrdineSectiiSpitale_SelectedIndexChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(8, 760);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(208, 38);
+            this.label18.TabIndex = 40;
+            this.label18.Text = "Sortează după:";
+            // 
+            // comboBoxColoaneSectiiSpitale
+            // 
+            this.comboBoxColoaneSectiiSpitale.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxColoaneSectiiSpitale.FormattingEnabled = true;
+            this.comboBoxColoaneSectiiSpitale.Location = new System.Drawing.Point(8, 808);
+            this.comboBoxColoaneSectiiSpitale.Name = "comboBoxColoaneSectiiSpitale";
+            this.comboBoxColoaneSectiiSpitale.Size = new System.Drawing.Size(328, 45);
+            this.comboBoxColoaneSectiiSpitale.TabIndex = 39;
+            this.comboBoxColoaneSectiiSpitale.SelectedIndexChanged += new System.EventHandler(this.comboBoxColoaneSectiiSpitale_SelectedIndexChanged);
+            // 
+            // buttonEditeazaSectiiSpitale
+            // 
+            this.buttonEditeazaSectiiSpitale.BackColor = System.Drawing.Color.Yellow;
+            this.buttonEditeazaSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditeazaSectiiSpitale.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonEditeazaSectiiSpitale.Location = new System.Drawing.Point(520, 800);
+            this.buttonEditeazaSectiiSpitale.Name = "buttonEditeazaSectiiSpitale";
+            this.buttonEditeazaSectiiSpitale.Size = new System.Drawing.Size(168, 56);
+            this.buttonEditeazaSectiiSpitale.TabIndex = 38;
+            this.buttonEditeazaSectiiSpitale.Text = "Editează";
+            this.buttonEditeazaSectiiSpitale.UseVisualStyleBackColor = false;
+            this.buttonEditeazaSectiiSpitale.Click += new System.EventHandler(this.buttonEditeazaSectiiSpitale_Click);
+            // 
+            // buttonAdaugaSectiiSpitale
+            // 
+            this.buttonAdaugaSectiiSpitale.BackColor = System.Drawing.Color.Green;
+            this.buttonAdaugaSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdaugaSectiiSpitale.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAdaugaSectiiSpitale.Location = new System.Drawing.Point(344, 800);
+            this.buttonAdaugaSectiiSpitale.Name = "buttonAdaugaSectiiSpitale";
+            this.buttonAdaugaSectiiSpitale.Size = new System.Drawing.Size(168, 56);
+            this.buttonAdaugaSectiiSpitale.TabIndex = 37;
+            this.buttonAdaugaSectiiSpitale.Text = "Adaugă";
+            this.buttonAdaugaSectiiSpitale.UseVisualStyleBackColor = false;
+            this.buttonAdaugaSectiiSpitale.Click += new System.EventHandler(this.buttonAdaugaSectiiSpitale_Click);
+            // 
+            // buttonStergeSectiiSpitale
+            // 
+            this.buttonStergeSectiiSpitale.BackColor = System.Drawing.Color.Red;
+            this.buttonStergeSectiiSpitale.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStergeSectiiSpitale.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonStergeSectiiSpitale.Location = new System.Drawing.Point(344, 856);
+            this.buttonStergeSectiiSpitale.Name = "buttonStergeSectiiSpitale";
+            this.buttonStergeSectiiSpitale.Size = new System.Drawing.Size(168, 56);
+            this.buttonStergeSectiiSpitale.TabIndex = 36;
+            this.buttonStergeSectiiSpitale.Text = "Șterge";
+            this.buttonStergeSectiiSpitale.UseVisualStyleBackColor = false;
+            this.buttonStergeSectiiSpitale.Click += new System.EventHandler(this.buttonStergeSectiiSpitale_Click);
+            // 
+            // textBoxidSpital
+            // 
+            this.textBoxidSpital.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxidSpital.Location = new System.Drawing.Point(192, 104);
+            this.textBoxidSpital.Name = "textBoxidSpital";
+            this.textBoxidSpital.Size = new System.Drawing.Size(232, 39);
+            this.textBoxidSpital.TabIndex = 8;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.label19.Location = new System.Drawing.Point(248, 168);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(0, 32);
+            this.label19.TabIndex = 7;
+            // 
+            // labelidSpital_FK
+            // 
+            this.labelidSpital_FK.AutoSize = true;
+            this.labelidSpital_FK.BackColor = System.Drawing.Color.Transparent;
+            this.labelidSpital_FK.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelidSpital_FK.Location = new System.Drawing.Point(72, 104);
+            this.labelidSpital_FK.Name = "labelidSpital_FK";
+            this.labelidSpital_FK.Size = new System.Drawing.Size(119, 38);
+            this.labelidSpital_FK.TabIndex = 4;
+            this.labelidSpital_FK.Text = "idSpital:";
+            // 
+            // labelidSectie
+            // 
+            this.labelidSectie.AutoSize = true;
+            this.labelidSectie.BackColor = System.Drawing.Color.Transparent;
+            this.labelidSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelidSectie.Location = new System.Drawing.Point(64, 56);
+            this.labelidSectie.Name = "labelidSectie";
+            this.labelidSectie.Size = new System.Drawing.Size(123, 38);
+            this.labelidSectie.TabIndex = 3;
+            this.labelidSectie.Text = "idSectie:";
+            // 
+            // dataGridViewSectiiSpitale
+            // 
+            this.dataGridViewSectiiSpitale.AllowUserToAddRows = false;
+            this.dataGridViewSectiiSpitale.AllowUserToDeleteRows = false;
+            this.dataGridViewSectiiSpitale.AllowUserToResizeColumns = false;
+            this.dataGridViewSectiiSpitale.AllowUserToResizeRows = false;
+            this.dataGridViewSectiiSpitale.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridViewSectiiSpitale.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewSectiiSpitale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSectiiSpitale.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataGridViewSectiiSpitale.Location = new System.Drawing.Point(832, 8);
+            this.dataGridViewSectiiSpitale.Name = "dataGridViewSectiiSpitale";
+            this.dataGridViewSectiiSpitale.ReadOnly = true;
+            this.dataGridViewSectiiSpitale.RowHeadersWidth = 51;
+            this.dataGridViewSectiiSpitale.RowTemplate.Height = 24;
+            this.dataGridViewSectiiSpitale.Size = new System.Drawing.Size(1144, 920);
+            this.dataGridViewSectiiSpitale.TabIndex = 2;
+            this.dataGridViewSectiiSpitale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSectiiSpitale_CellClick);
             // 
             // panelSpitale
             // 
@@ -1538,37 +1736,30 @@ namespace Hospital_Management_System
             this.panelJudet.Size = new System.Drawing.Size(1984, 936);
             this.panelJudet.TabIndex = 26;
             // 
-            // textBoxCorp
+            // buttonSectii
             // 
-            this.textBoxCorp.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxCorp.Location = new System.Drawing.Point(192, 200);
-            this.textBoxCorp.Name = "textBoxCorp";
-            this.textBoxCorp.Size = new System.Drawing.Size(232, 39);
-            this.textBoxCorp.TabIndex = 58;
+            this.buttonSectii.BackColor = System.Drawing.Color.MistyRose;
+            this.buttonSectii.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSectii.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonSectii.Location = new System.Drawing.Point(0, 376);
+            this.buttonSectii.Name = "buttonSectii";
+            this.buttonSectii.Size = new System.Drawing.Size(272, 56);
+            this.buttonSectii.TabIndex = 56;
+            this.buttonSectii.Text = "Secții";
+            this.buttonSectii.UseVisualStyleBackColor = false;
+            this.buttonSectii.Click += new System.EventHandler(this.buttonSectii_Click);
             // 
-            // textBoxEtaj
+            // buttonFunctii
             // 
-            this.textBoxEtaj.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxEtaj.Location = new System.Drawing.Point(192, 248);
-            this.textBoxEtaj.Name = "textBoxEtaj";
-            this.textBoxEtaj.Size = new System.Drawing.Size(232, 39);
-            this.textBoxEtaj.TabIndex = 59;
-            // 
-            // textBoxTelefonSectie
-            // 
-            this.textBoxTelefonSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxTelefonSectie.Location = new System.Drawing.Point(192, 296);
-            this.textBoxTelefonSectie.Name = "textBoxTelefonSectie";
-            this.textBoxTelefonSectie.Size = new System.Drawing.Size(232, 39);
-            this.textBoxTelefonSectie.TabIndex = 60;
-            // 
-            // textBoxEmailSectie
-            // 
-            this.textBoxEmailSectie.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxEmailSectie.Location = new System.Drawing.Point(192, 344);
-            this.textBoxEmailSectie.Name = "textBoxEmailSectie";
-            this.textBoxEmailSectie.Size = new System.Drawing.Size(232, 39);
-            this.textBoxEmailSectie.TabIndex = 61;
+            this.buttonFunctii.BackColor = System.Drawing.Color.MistyRose;
+            this.buttonFunctii.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFunctii.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonFunctii.Location = new System.Drawing.Point(0, 432);
+            this.buttonFunctii.Name = "buttonFunctii";
+            this.buttonFunctii.Size = new System.Drawing.Size(272, 56);
+            this.buttonFunctii.TabIndex = 57;
+            this.buttonFunctii.Text = "Funcții";
+            this.buttonFunctii.UseVisualStyleBackColor = false;
             // 
             // adminMain
             // 
@@ -1576,6 +1767,9 @@ namespace Hospital_Management_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(2257, 1084);
+            this.Controls.Add(this.panelSectii);
+            this.Controls.Add(this.buttonFunctii);
+            this.Controls.Add(this.buttonSectii);
             this.Controls.Add(this.buttonJudete);
             this.Controls.Add(this.buttonMedicamente);
             this.Controls.Add(this.buttonTratamente);
@@ -1607,14 +1801,19 @@ namespace Hospital_Management_System
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelJudete)).EndInit();
             this.panelLocalitati.ResumeLayout(false);
             this.panelLocalitati.PerformLayout();
-            this.panelSectiiSpitale.ResumeLayout(false);
-            this.panelSectiiSpitale.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSectiiSpitale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckSectiiSpitale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSectiiSpitale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelLocalitati)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckLocalitati)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLocalitati)).EndInit();
+            this.panelSectiiSpitale.ResumeLayout(false);
+            this.panelSectiiSpitale.PerformLayout();
+            this.panelSectii.ResumeLayout(false);
+            this.panelSectii.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSectii)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckSectii)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSectii)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSectiiSpitale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckSectiiSpitale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSectiiSpitale)).EndInit();
             this.panelSpitale.ResumeLayout(false);
             this.panelSpitale.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelSpitale)).EndInit();
@@ -1711,12 +1910,7 @@ namespace Hospital_Management_System
         private System.Windows.Forms.DataGridView dataGridViewSpitale;
         private System.Windows.Forms.Panel panelJudet;
         private System.Windows.Forms.Label labelidSpital_print;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckedListBox checkedListBoxJudete;
-        private System.Windows.Forms.Button buttonFiltruLocalitati;
         private System.Windows.Forms.Panel panelSectiiSpitale;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label labelidSectie_print;
         private System.Windows.Forms.TextBox textBoxcodSectie;
@@ -1745,5 +1939,24 @@ namespace Hospital_Management_System
         private System.Windows.Forms.TextBox textBoxTelefonSectie;
         private System.Windows.Forms.TextBox textBoxEtaj;
         private System.Windows.Forms.TextBox textBoxCorp;
+        private System.Windows.Forms.Button buttonSectii;
+        private System.Windows.Forms.Button buttonFunctii;
+        private System.Windows.Forms.Panel panelSectii;
+        private System.Windows.Forms.Label labelcodSectie_print;
+        private System.Windows.Forms.PictureBox pictureBoxCancelSectii;
+        private System.Windows.Forms.PictureBox pictureBoxCheckSectii;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label labelInfoSectie;
+        private System.Windows.Forms.Button buttonClearSectii;
+        private System.Windows.Forms.ComboBox comboBoxOrdineSectii;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox comboBoxColoaneSectii;
+        private System.Windows.Forms.Button buttonEditeazaSectii;
+        private System.Windows.Forms.Button buttonAdaugaSectii;
+        private System.Windows.Forms.Button buttonStergeSectii;
+        private System.Windows.Forms.TextBox textBoxnumeSectie;
+        private System.Windows.Forms.Label labelnumeSectie;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridView dataGridViewSectii;
     }
 }
