@@ -31,7 +31,6 @@ namespace Hospital_Management_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(addDoctor));
             this.textBoxNume = new System.Windows.Forms.TextBox();
-            this.textBoxParafa = new System.Windows.Forms.TextBox();
             this.labelNume = new System.Windows.Forms.Label();
             this.labelParafa = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@ namespace Hospital_Management_System
             this.comboBoxSectie = new System.Windows.Forms.ComboBox();
             this.labelSpital = new System.Windows.Forms.Label();
             this.comboBoxSpital = new System.Windows.Forms.ComboBox();
+            this.labelcodParafa_print = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.groupBoxIDSecție.SuspendLayout();
             this.SuspendLayout();
@@ -69,14 +69,6 @@ namespace Hospital_Management_System
             this.textBoxNume.Name = "textBoxNume";
             this.textBoxNume.Size = new System.Drawing.Size(272, 43);
             this.textBoxNume.TabIndex = 35;
-            // 
-            // textBoxParafa
-            // 
-            this.textBoxParafa.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxParafa.Location = new System.Drawing.Point(176, 152);
-            this.textBoxParafa.Name = "textBoxParafa";
-            this.textBoxParafa.Size = new System.Drawing.Size(272, 43);
-            this.textBoxParafa.TabIndex = 34;
             // 
             // labelNume
             // 
@@ -359,12 +351,23 @@ namespace Hospital_Management_System
             this.comboBoxSpital.TabIndex = 51;
             this.comboBoxSpital.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpital_SelectedIndexChanged);
             // 
+            // labelcodParafa_print
+            // 
+            this.labelcodParafa_print.AutoSize = true;
+            this.labelcodParafa_print.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelcodParafa_print.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelcodParafa_print.Location = new System.Drawing.Point(192, 152);
+            this.labelcodParafa_print.Name = "labelcodParafa_print";
+            this.labelcodParafa_print.Size = new System.Drawing.Size(0, 38);
+            this.labelcodParafa_print.TabIndex = 51;
+            // 
             // addDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1200, 600);
+            this.Controls.Add(this.labelcodParafa_print);
             this.Controls.Add(this.groupBoxIDSecție);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.comboBoxFunctii);
@@ -380,7 +383,6 @@ namespace Hospital_Management_System
             this.Controls.Add(this.labelCNP);
             this.Controls.Add(this.labelPrenume);
             this.Controls.Add(this.textBoxNume);
-            this.Controls.Add(this.textBoxParafa);
             this.Controls.Add(this.labelNume);
             this.Controls.Add(this.labelParafa);
             this.Controls.Add(this.buttonBack);
@@ -404,7 +406,6 @@ namespace Hospital_Management_System
         #endregion
 
         private System.Windows.Forms.TextBox textBoxNume;
-        private System.Windows.Forms.TextBox textBoxParafa;
         private System.Windows.Forms.Label labelNume;
         private System.Windows.Forms.Label labelParafa;
         private System.Windows.Forms.Button buttonBack;
@@ -431,5 +432,6 @@ namespace Hospital_Management_System
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxSectie;
+        private System.Windows.Forms.Label labelcodParafa_print;
     }
 }

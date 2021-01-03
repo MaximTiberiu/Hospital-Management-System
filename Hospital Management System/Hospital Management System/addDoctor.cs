@@ -18,7 +18,37 @@ namespace Hospital_Management_System
         {
             InitializeComponent();
             fillComboBox(comboBoxFunctii);
+            fillCodParafa();
             groupBoxIDSecție.Hide();
+        }
+
+        private void fillCodParafa()
+        {
+            String queryString = String.Format(@"SELECT DOCTORI_codParafa_SEQ.NEXTVAL FROM DUAL");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    labelcodParafa_print.Text = command.ExecuteScalar().ToString();
+
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private string idSectie = "";
@@ -67,6 +97,8 @@ namespace Hospital_Management_System
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             groupBoxIDSecție.Show();
+            comboBoxSpital.Items.Clear();
+            comboBoxSectie.Items.Clear();
             String queryString = String.Format(@"SELECT * FROM SPITALE");
             StringBuilder errorMessages = new StringBuilder();
 
@@ -105,10 +137,12 @@ namespace Hospital_Management_System
 
         private void comboBoxSpital_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             String queryString = String.Format(@"SELECT se.numeSectie, ss.idSectie, ss.corp, ss.etaj " +
                                                 "FROM SECTII_SPITALE ss JOIN SPITALE s ON ss.idSpital = s.idSpital " +
                                                 "JOIN SECTII se on ss.codSectie = se.codSectie " +
                                                 "WHERE s.numeSpital = '" + comboBoxSpital.SelectedItem.ToString()) + "'";
+
             StringBuilder errorMessages = new StringBuilder();
 
             using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
@@ -128,12 +162,10 @@ namespace Hospital_Management_System
                             if (dataReader["corp"].ToString() == "")
                             {
                                 sectie = dataReader["numeSectie"].ToString() + ", etaj " + dataReader["etaj"].ToString();
-                                idSectie = dataReader["idSectie"].ToString();
                             }
                             else
                             {
                                 sectie = dataReader["numeSectie"].ToString() + ", corpul " + dataReader["corp"].ToString() + ", etaj " + dataReader["etaj"].ToString();
-                                idSectie = dataReader["idSectie"].ToString();
                             }
                             comboBoxSectie.Items.Add(sectie);
                         }
@@ -156,8 +188,67 @@ namespace Hospital_Management_System
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            textBoxIDSectie.Text = idSectie;
-            groupBoxIDSecție.Hide();
+            String queryString;
+
+            if (comboBoxSectie.Text.IndexOf("corpul") >= 0)
+            {
+                int posSectie = comboBoxSectie.Text.IndexOf(", corpul ");
+                int posCorp = comboBoxSectie.Text.IndexOf(", etaj ");
+
+                string sectie = comboBoxSectie.Text.Substring(0, posSectie);
+                string corp = comboBoxSectie.Text.Substring(posSectie + 9, posCorp - (posSectie + 9));
+                string etaj = comboBoxSectie.Text.Substring(posCorp + 7);
+
+                queryString = String.Format(@"SELECT se.numeSectie, ss.idSectie, ss.corp, ss.etaj " +
+                                                    "FROM SECTII_SPITALE ss JOIN SPITALE s ON ss.idSpital = s.idSpital " +
+                                                    "JOIN SECTII se on ss.codSectie = se.codSectie " +
+                                                    "WHERE LOWER(s.numeSpital) = LOWER('" + comboBoxSpital.SelectedItem.ToString() + "') AND LOWER(se.numeSectie) = LOWER('" + sectie + "')  AND LOWER(ss.corp) = LOWER('" + corp  + "') AND ss.etaj = " + etaj);
+            }
+            else
+            {
+                int posSectie = comboBoxSectie.Text.IndexOf(", etaj ");
+                
+                string sectie = comboBoxSectie.Text.Substring(0, posSectie);
+                string etaj = comboBoxSectie.Text.Substring(posSectie + 7);
+
+                queryString = String.Format(@"SELECT se.numeSectie, ss.idSectie, ss.corp, ss.etaj " +
+                                                    "FROM SECTII_SPITALE ss JOIN SPITALE s ON ss.idSpital = s.idSpital " +
+                                                    "JOIN SECTII se on ss.codSectie = se.codSectie " +
+                                                    "WHERE LOWER(s.numeSpital) = LOWER('" + comboBoxSpital.SelectedItem.ToString() + "') AND LOWER(se.numeSectie) = LOWER('" + sectie + "')  AND ss.etaj = " + etaj);
+            }
+
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    if (comboBoxSpital.SelectedIndex != -1)
+                    {
+                        OracleDataReader dataReader = command.ExecuteReader();
+                        comboBoxSectie.Items.RemoveAt(0);
+
+                        dataReader.Read();
+                        idSectie = dataReader["idSectie"].ToString();
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                textBoxIDSectie.Text = idSectie;
+                groupBoxIDSecție.Hide();
+            }
         }
 
         public static bool isAllLetters(TextBox textToBeVerified)
@@ -185,19 +276,12 @@ namespace Hospital_Management_System
 
         private void Verify()
         {
-            if (String.IsNullOrEmpty(textBoxParafa.Text.Trim()) || String.IsNullOrEmpty(textBoxNume.Text.Trim())
+            if (String.IsNullOrEmpty(textBoxNume.Text.Trim())
                 || String.IsNullOrEmpty(textBoxPrenume.Text.Trim()) || String.IsNullOrEmpty(textBoxCNP.Text.Trim())
                 || String.IsNullOrEmpty(textBoxTelefon.Text.Trim()) || String.IsNullOrEmpty(textBoxEmail.Text.Trim())
                 || String.IsNullOrEmpty(textBoxIDSectie.Text.Trim()) || comboBoxFunctii.SelectedIndex == -1)
             {
                 MessageBox.Show("Completați toate câmpurile!", "Câmp gol.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (doctorLogin.hasSpaces(textBoxParafa))
-            {
-                textBoxParafa.Clear();
-                MessageBox.Show("Nu pot exista spații în codul parafă. Vă rugăm să tastați din nou!", "Fara spații.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -257,13 +341,6 @@ namespace Hospital_Management_System
                 return;
             }
 
-            if (doctorLogin.isAllDigits(textBoxParafa) || doctorLogin.hasCorrectLength(textBoxParafa, 6))
-            {
-                textBoxParafa.Clear();
-                MessageBox.Show("Codul parafă este un număr de 6 cifre. Vă rugăm să tastați din nou!", "Lungime greșită.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if (doctorLogin.isAllDigits(textBoxCNP) || doctorLogin.hasCorrectLength(textBoxCNP, 13))
             {
                 textBoxCNP.Clear();
@@ -283,7 +360,7 @@ namespace Hospital_Management_System
         {
             Verify();
 
-            string codParafa = textBoxParafa.Text.Trim();
+            string codParafa = labelcodParafa_print.Text;
             string nume = textBoxNume.Text.Trim();
             string prenume = textBoxPrenume.Text.Trim();
             string CNP = textBoxCNP.Text.Trim();
@@ -306,11 +383,7 @@ namespace Hospital_Management_System
 
                     if (rows != 0)
                     {
-                        MessageBox.Show("ADAUGAT!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("NU A FOST ADAUGAT!");
+                        MessageBox.Show("Ați fost introdus în baza de date. Vă puteți conecta din meniul principal!", "Adăugare", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
                 }
                 catch (OracleException ex)
