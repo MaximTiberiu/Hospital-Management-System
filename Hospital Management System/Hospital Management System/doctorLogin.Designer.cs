@@ -108,6 +108,7 @@ namespace Hospital_Management_System
             this.textBoxCNP.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCNP.Location = new System.Drawing.Point(184, 304);
             this.textBoxCNP.Name = "textBoxCNP";
+            this.textBoxCNP.PasswordChar = '*';
             this.textBoxCNP.Size = new System.Drawing.Size(272, 43);
             this.textBoxCNP.TabIndex = 21;
             // 

@@ -13,6 +13,11 @@ namespace Hospital_Management_System
 {
     public partial class doctorLogin : Form
     {
+        static private string codParafa;
+        static public string get_codParafa()
+        {
+            return codParafa;
+        }
         public doctorLogin()
         {
             InitializeComponent();
@@ -86,7 +91,7 @@ namespace Hospital_Management_System
                 return;
             }
 
-            string codParafa = textBoxParafa.Text.Trim();
+            codParafa = textBoxParafa.Text.Trim();
             string CNP = textBoxCNP.Text.Trim();
 
             String queryString = String.Format(@"SELECT * FROM DOCTORI WHERE codParafa = '{0}' AND CNP = '{1}'", codParafa, CNP);
@@ -102,7 +107,9 @@ namespace Hospital_Management_System
 
                     if (dataReader.HasRows)
                     {
-                        MessageBox.Show("LOGAT!");
+                        doctorMain doctorMain = new doctorMain();
+                        doctorMain.Show();
+                        this.Hide();
                     }
                     else
                     {

@@ -2753,7 +2753,7 @@ namespace Hospital_Management_System
 
         private void buttonClearPacienti_Click(object sender, EventArgs e)
         {
-            labelidLocalitate_print.Text = "";
+            labelidPacient_print.Text = "";
             textBoxNumePacient.Text = "";
             textBoxPrenumePacient.Text = "";
             textBoxCNPPacient.Text = "";
@@ -4445,6 +4445,5 @@ namespace Hospital_Management_System
         }
 
         #endregion
-
     }
 }

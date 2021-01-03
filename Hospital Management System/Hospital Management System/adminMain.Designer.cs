@@ -276,6 +276,8 @@ namespace Hospital_Management_System
             this.labelcodBoala = new System.Windows.Forms.Label();
             this.dataGridViewBoli = new System.Windows.Forms.DataGridView();
             this.panelTratamente = new System.Windows.Forms.Panel();
+            this.richTextBoxTratamente = new System.Windows.Forms.RichTextBox();
+            this.labelIndicatii = new System.Windows.Forms.Label();
             this.textBoxperioadaAdministrare = new System.Windows.Forms.TextBox();
             this.labelperioadaAdministrare = new System.Windows.Forms.Label();
             this.pictureBoxCancelTratamente = new System.Windows.Forms.PictureBox();
@@ -293,9 +295,8 @@ namespace Hospital_Management_System
             this.labelcodBoala_FK = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.dataGridViewTratamente = new System.Windows.Forms.DataGridView();
-            this.labelIndicatii = new System.Windows.Forms.Label();
-            this.richTextBoxTratamente = new System.Windows.Forms.RichTextBox();
             this.panelMedicamente = new System.Windows.Forms.Panel();
+            this.textBoxdozaUnitate = new System.Windows.Forms.TextBox();
             this.labeldozaUnitate = new System.Windows.Forms.Label();
             this.textBoxtipMedicament = new System.Windows.Forms.TextBox();
             this.labeltipMedicament = new System.Windows.Forms.Label();
@@ -314,7 +315,6 @@ namespace Hospital_Management_System
             this.labelnumeMedicament = new System.Windows.Forms.Label();
             this.labelidMedicament = new System.Windows.Forms.Label();
             this.dataGridViewMedicamente = new System.Windows.Forms.DataGridView();
-            this.textBoxdozaUnitate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJudete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckJudete)).BeginInit();
@@ -3307,6 +3307,26 @@ namespace Hospital_Management_System
             this.panelTratamente.Size = new System.Drawing.Size(1984, 936);
             this.panelTratamente.TabIndex = 71;
             // 
+            // richTextBoxTratamente
+            // 
+            this.richTextBoxTratamente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.richTextBoxTratamente.Location = new System.Drawing.Point(304, 200);
+            this.richTextBoxTratamente.Name = "richTextBoxTratamente";
+            this.richTextBoxTratamente.Size = new System.Drawing.Size(360, 184);
+            this.richTextBoxTratamente.TabIndex = 51;
+            this.richTextBoxTratamente.Text = "";
+            // 
+            // labelIndicatii
+            // 
+            this.labelIndicatii.AutoSize = true;
+            this.labelIndicatii.BackColor = System.Drawing.Color.Transparent;
+            this.labelIndicatii.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIndicatii.Location = new System.Drawing.Point(184, 200);
+            this.labelIndicatii.Name = "labelIndicatii";
+            this.labelIndicatii.Size = new System.Drawing.Size(124, 38);
+            this.labelIndicatii.TabIndex = 49;
+            this.labelIndicatii.Text = "Indicații:";
+            // 
             // textBoxperioadaAdministrare
             // 
             this.textBoxperioadaAdministrare.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
@@ -3500,26 +3520,6 @@ namespace Hospital_Management_System
             this.dataGridViewTratamente.TabIndex = 2;
             this.dataGridViewTratamente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTratamente_CellClick);
             // 
-            // labelIndicatii
-            // 
-            this.labelIndicatii.AutoSize = true;
-            this.labelIndicatii.BackColor = System.Drawing.Color.Transparent;
-            this.labelIndicatii.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIndicatii.Location = new System.Drawing.Point(184, 200);
-            this.labelIndicatii.Name = "labelIndicatii";
-            this.labelIndicatii.Size = new System.Drawing.Size(124, 38);
-            this.labelIndicatii.TabIndex = 49;
-            this.labelIndicatii.Text = "Indicații:";
-            // 
-            // richTextBoxTratamente
-            // 
-            this.richTextBoxTratamente.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.richTextBoxTratamente.Location = new System.Drawing.Point(304, 200);
-            this.richTextBoxTratamente.Name = "richTextBoxTratamente";
-            this.richTextBoxTratamente.Size = new System.Drawing.Size(360, 184);
-            this.richTextBoxTratamente.TabIndex = 51;
-            this.richTextBoxTratamente.Text = "";
-            // 
             // panelMedicamente
             // 
             this.panelMedicamente.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -3547,6 +3547,14 @@ namespace Hospital_Management_System
             this.panelMedicamente.Name = "panelMedicamente";
             this.panelMedicamente.Size = new System.Drawing.Size(1984, 936);
             this.panelMedicamente.TabIndex = 72;
+            // 
+            // textBoxdozaUnitate
+            // 
+            this.textBoxdozaUnitate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxdozaUnitate.Location = new System.Drawing.Point(304, 200);
+            this.textBoxdozaUnitate.Name = "textBoxdozaUnitate";
+            this.textBoxdozaUnitate.Size = new System.Drawing.Size(200, 39);
+            this.textBoxdozaUnitate.TabIndex = 50;
             // 
             // labeldozaUnitate
             // 
@@ -3616,7 +3624,7 @@ namespace Hospital_Management_System
             this.label29.ForeColor = System.Drawing.Color.Maroon;
             this.label29.Location = new System.Drawing.Point(24, 8);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(591, 21);
+            this.label29.Size = new System.Drawing.Size(473, 17);
             this.label29.TabIndex = 43;
             this.label29.Text = "Pentru a edita un medicament, selectați medicamentul din partea dreaptă.";
             // 
@@ -3752,23 +3760,12 @@ namespace Hospital_Management_System
             this.dataGridViewMedicamente.TabIndex = 2;
             this.dataGridViewMedicamente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMedicamente_CellClick);
             // 
-            // textBoxdozaUnitate
-            // 
-            this.textBoxdozaUnitate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxdozaUnitate.Location = new System.Drawing.Point(304, 200);
-            this.textBoxdozaUnitate.Name = "textBoxdozaUnitate";
-            this.textBoxdozaUnitate.Size = new System.Drawing.Size(200, 39);
-            this.textBoxdozaUnitate.TabIndex = 50;
-            // 
             // adminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(2257, 1084);
-            this.Controls.Add(this.panelMedicamente);
-            this.Controls.Add(this.panelTratamente);
-            this.Controls.Add(this.panelBoli);
             this.Controls.Add(this.buttonFunctii);
             this.Controls.Add(this.buttonSectii);
             this.Controls.Add(this.buttonJudete);
@@ -3786,7 +3783,6 @@ namespace Hospital_Management_System
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelApp);
-            this.Controls.Add(this.panelSimptome);
             this.Controls.Add(this.panelPacienti);
             this.Controls.Add(this.panelDoctori);
             this.Controls.Add(this.panelFunctii);
@@ -3795,6 +3791,10 @@ namespace Hospital_Management_System
             this.Controls.Add(this.panelLocalitati);
             this.Controls.Add(this.panelSpitale);
             this.Controls.Add(this.panelJudet);
+            this.Controls.Add(this.panelMedicamente);
+            this.Controls.Add(this.panelTratamente);
+            this.Controls.Add(this.panelBoli);
+            this.Controls.Add(this.panelSimptome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "adminMain";

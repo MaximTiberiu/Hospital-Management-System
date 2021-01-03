@@ -37,7 +37,7 @@ namespace Hospital_Management_System
             this.labelApp = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.labelCNP = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxNume = new System.Windows.Forms.TextBox();
             this.textBoxCNP = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +64,7 @@ namespace Hospital_Management_System
             this.buttonPatientLogin.TabIndex = 11;
             this.buttonPatientLogin.Text = "Autentificare";
             this.buttonPatientLogin.UseVisualStyleBackColor = false;
+            this.buttonPatientLogin.Click += new System.EventHandler(this.buttonPatientLogin_Click);
             // 
             // pictureBoxLogo
             // 
@@ -107,7 +108,7 @@ namespace Hospital_Management_System
             this.labelName.ForeColor = System.Drawing.Color.OrangeRed;
             this.labelName.Location = new System.Drawing.Point(16, 256);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(126, 48);
+            this.labelName.Size = new System.Drawing.Size(101, 38);
             this.labelName.TabIndex = 14;
             this.labelName.Text = "Nume:";
             // 
@@ -122,19 +123,20 @@ namespace Hospital_Management_System
             this.labelCNP.TabIndex = 15;
             this.labelCNP.Text = "CNP:";
             // 
-            // textBoxName
+            // textBoxNume
             // 
-            this.textBoxName.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(112, 256);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(272, 43);
-            this.textBoxName.TabIndex = 16;
+            this.textBoxNume.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNume.Location = new System.Drawing.Point(120, 256);
+            this.textBoxNume.Name = "textBoxNume";
+            this.textBoxNume.Size = new System.Drawing.Size(272, 43);
+            this.textBoxNume.TabIndex = 16;
             // 
             // textBoxCNP
             // 
             this.textBoxCNP.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCNP.Location = new System.Drawing.Point(112, 312);
+            this.textBoxCNP.Location = new System.Drawing.Point(120, 312);
             this.textBoxCNP.Name = "textBoxCNP";
+            this.textBoxCNP.PasswordChar = '*';
             this.textBoxCNP.Size = new System.Drawing.Size(272, 43);
             this.textBoxCNP.TabIndex = 17;
             // 
@@ -145,7 +147,7 @@ namespace Hospital_Management_System
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(985, 562);
             this.Controls.Add(this.textBoxCNP);
-            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.textBoxNume);
             this.Controls.Add(this.labelCNP);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.buttonBack);
@@ -173,7 +175,7 @@ namespace Hospital_Management_System
         private System.Windows.Forms.Label labelApp;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelCNP;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxNume;
         private System.Windows.Forms.TextBox textBoxCNP;
     }
 }

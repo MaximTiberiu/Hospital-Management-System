@@ -118,8 +118,14 @@
     <EmbeddedResource Include="doctorLogin.resx">
       <DependentUpon>doctorLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="doctorMain.resx">
+      <DependentUpon>doctorMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="patientLogin.resx">
       <DependentUpon>patientLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="patientMain.resx">
+      <DependentUpon>patientMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
