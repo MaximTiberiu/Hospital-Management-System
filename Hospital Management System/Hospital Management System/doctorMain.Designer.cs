@@ -210,6 +210,15 @@ namespace Hospital_Management_System
             this.labelcodBoala_FK = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.dataGridViewTratamente = new System.Windows.Forms.DataGridView();
+            this.buttonCautare = new System.Windows.Forms.Button();
+            this.panelCautare = new System.Windows.Forms.Panel();
+            this.buttonClearCautare = new System.Windows.Forms.Button();
+            this.buttonCauta = new System.Windows.Forms.Button();
+            this.dataGridViewCautare = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxcodBoalaCautare = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxcodParafaCautare = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelMedicamente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelMedicamente)).BeginInit();
@@ -242,6 +251,8 @@ namespace Hospital_Management_System
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelTratamente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckTratamente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTratamente)).BeginInit();
+            this.panelCautare.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCautare)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonDiagnostice
@@ -2379,12 +2390,125 @@ namespace Hospital_Management_System
             this.dataGridViewTratamente.TabIndex = 2;
             this.dataGridViewTratamente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTratamente_CellClick);
             // 
+            // buttonCautare
+            // 
+            this.buttonCautare.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonCautare.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCautare.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonCautare.Location = new System.Drawing.Point(0, 752);
+            this.buttonCautare.Name = "buttonCautare";
+            this.buttonCautare.Size = new System.Drawing.Size(272, 56);
+            this.buttonCautare.TabIndex = 91;
+            this.buttonCautare.Text = "Căutare";
+            this.buttonCautare.UseVisualStyleBackColor = false;
+            this.buttonCautare.Click += new System.EventHandler(this.buttonCautare_Click);
+            // 
+            // panelCautare
+            // 
+            this.panelCautare.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelCautare.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panelCautare.Controls.Add(this.textBoxcodParafaCautare);
+            this.panelCautare.Controls.Add(this.label2);
+            this.panelCautare.Controls.Add(this.buttonClearCautare);
+            this.panelCautare.Controls.Add(this.buttonCauta);
+            this.panelCautare.Controls.Add(this.textBoxcodBoalaCautare);
+            this.panelCautare.Controls.Add(this.label6);
+            this.panelCautare.Controls.Add(this.dataGridViewCautare);
+            this.panelCautare.Location = new System.Drawing.Point(264, 152);
+            this.panelCautare.Name = "panelCautare";
+            this.panelCautare.Size = new System.Drawing.Size(1984, 936);
+            this.panelCautare.TabIndex = 92;
+            // 
+            // buttonClearCautare
+            // 
+            this.buttonClearCautare.BackColor = System.Drawing.Color.Maroon;
+            this.buttonClearCautare.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClearCautare.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonClearCautare.Location = new System.Drawing.Point(520, 856);
+            this.buttonClearCautare.Name = "buttonClearCautare";
+            this.buttonClearCautare.Size = new System.Drawing.Size(168, 56);
+            this.buttonClearCautare.TabIndex = 42;
+            this.buttonClearCautare.Text = "Clear";
+            this.buttonClearCautare.UseVisualStyleBackColor = false;
+            this.buttonClearCautare.Click += new System.EventHandler(this.buttonClearCautare_Click);
+            // 
+            // buttonCauta
+            // 
+            this.buttonCauta.BackColor = System.Drawing.Color.Green;
+            this.buttonCauta.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCauta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonCauta.Location = new System.Drawing.Point(344, 856);
+            this.buttonCauta.Name = "buttonCauta";
+            this.buttonCauta.Size = new System.Drawing.Size(168, 56);
+            this.buttonCauta.TabIndex = 37;
+            this.buttonCauta.Text = "Caută";
+            this.buttonCauta.UseVisualStyleBackColor = false;
+            this.buttonCauta.Click += new System.EventHandler(this.buttonCauta_Click);
+            // 
+            // dataGridViewCautare
+            // 
+            this.dataGridViewCautare.AllowUserToAddRows = false;
+            this.dataGridViewCautare.AllowUserToDeleteRows = false;
+            this.dataGridViewCautare.AllowUserToResizeColumns = false;
+            this.dataGridViewCautare.AllowUserToResizeRows = false;
+            this.dataGridViewCautare.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridViewCautare.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewCautare.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCautare.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataGridViewCautare.Location = new System.Drawing.Point(760, 8);
+            this.dataGridViewCautare.Name = "dataGridViewCautare";
+            this.dataGridViewCautare.ReadOnly = true;
+            this.dataGridViewCautare.RowHeadersWidth = 51;
+            this.dataGridViewCautare.RowTemplate.Height = 24;
+            this.dataGridViewCautare.Size = new System.Drawing.Size(1216, 920);
+            this.dataGridViewCautare.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(32, 104);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 38);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "codBoala:";
+            // 
+            // textBoxcodBoalaCautare
+            // 
+            this.textBoxcodBoalaCautare.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxcodBoalaCautare.Location = new System.Drawing.Point(184, 104);
+            this.textBoxcodBoalaCautare.Name = "textBoxcodBoalaCautare";
+            this.textBoxcodBoalaCautare.Size = new System.Drawing.Size(200, 39);
+            this.textBoxcodBoalaCautare.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(24, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 38);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "codParafă:";
+            // 
+            // textBoxcodParafaCautare
+            // 
+            this.textBoxcodParafaCautare.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxcodParafaCautare.Location = new System.Drawing.Point(184, 56);
+            this.textBoxcodParafaCautare.Name = "textBoxcodParafaCautare";
+            this.textBoxcodParafaCautare.Size = new System.Drawing.Size(200, 39);
+            this.textBoxcodParafaCautare.TabIndex = 48;
+            // 
             // doctorMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(2261, 1355);
+            this.Controls.Add(this.panelCautare);
+            this.Controls.Add(this.buttonCautare);
             this.Controls.Add(this.buttonMedicamente);
             this.Controls.Add(this.buttonDiagnostice);
             this.Controls.Add(this.buttonConsultatii);
@@ -2452,6 +2576,9 @@ namespace Hospital_Management_System
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelTratamente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckTratamente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTratamente)).EndInit();
+            this.panelCautare.ResumeLayout(false);
+            this.panelCautare.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCautare)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2638,5 +2765,14 @@ namespace Hospital_Management_System
         private System.Windows.Forms.GroupBox groupBoxMedicamente;
         private System.Windows.Forms.CheckedListBox checkedListBoxMedicamente;
         private System.Windows.Forms.Button buttonConfirmaMedicamente;
+        private System.Windows.Forms.Button buttonCautare;
+        private System.Windows.Forms.Panel panelCautare;
+        private System.Windows.Forms.TextBox textBoxcodParafaCautare;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonClearCautare;
+        private System.Windows.Forms.Button buttonCauta;
+        private System.Windows.Forms.TextBox textBoxcodBoalaCautare;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dataGridViewCautare;
     }
 }

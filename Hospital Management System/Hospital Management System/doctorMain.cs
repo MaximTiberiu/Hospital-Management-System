@@ -32,6 +32,8 @@ namespace Hospital_Management_System
             panelTratamente.Hide();
             panelMedicamente.SendToBack();
             panelMedicamente.Hide();
+            panelCautare.SendToBack();
+            panelCautare.Hide();
         }
         public doctorMain()
         {
@@ -3064,5 +3066,57 @@ namespace Hospital_Management_System
             }
         }
         #endregion
+
+        #region CAUTARE
+        private void buttonCauta_Click(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"SELECT p.nume, p.prenume, p.CNP, c.idPacient, c.dataConsultatie, c.codParafa, d.codBoala, b.denumireBoala
+                                                 FROM CONSULTATII c JOIN PACIENTI p ON c.idPacient = p.idPacient
+                                                                    JOIN DIAGNOSTICE d ON c.idConsultatie = d.idConsultatie
+                                                                    JOIN BOLI b ON d.codBoala = b.codBoala
+                                                 WHERE c.codParafa = " + textBoxcodParafaCautare.Text + " AND d.codBoala = " + textBoxcodBoalaCautare.Text);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewCautare.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewCautare);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        #endregion
+
+        private void buttonClearCautare_Click(object sender, EventArgs e)
+        {
+            textBoxcodBoalaCautare.Text = "";
+            textBoxcodParafaCautare.Text = "";
+        }
+
+        private void buttonCautare_Click(object sender, EventArgs e)
+        {
+            panelCautare.Show();
+            panelCautare.BringToFront();
+        }
     }
 }
