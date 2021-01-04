@@ -26,6 +26,12 @@ namespace Hospital_Management_System
             panelConsultatii.Hide();
             panelDiagnostice.SendToBack();
             panelDiagnostice.Hide();
+            panelBoli.SendToBack();
+            panelBoli.Hide();
+            panelTratamente.SendToBack();
+            panelTratamente.Hide();
+            panelMedicamente.SendToBack();
+            panelMedicamente.Hide();
         }
         public doctorMain()
         {
@@ -1396,7 +1402,7 @@ namespace Hospital_Management_System
             
             textBoxidPacient.Enabled = false;
             textBoxidConsultatie.Enabled = false;
-            textBoxcodBoala.Enabled = false;
+            textBoxcodBoala_FK.Enabled = false;
             pictureBoxCheckDiagnostice.Visible = false;
             pictureBoxCancelDiagnostice.Visible = false;
 
@@ -1413,7 +1419,7 @@ namespace Hospital_Management_System
             labelidDiagnostic_print.Text = selectedRow.Cells[0].Value.ToString();
             textBoxidPacient.Text = selectedRow.Cells[5].Value.ToString();
             textBoxidConsultatie.Text = selectedRow.Cells[1].Value.ToString();
-            textBoxcodBoala.Text = selectedRow.Cells[2].Value.ToString();
+            textBoxcodBoala_FK.Text = selectedRow.Cells[2].Value.ToString();
             checkCheck(labelidDiagnostic_print.Text);
         }
 
@@ -1428,7 +1434,7 @@ namespace Hospital_Management_System
             {
                 textBoxidPacient.Enabled = false;
                 textBoxidConsultatie.Enabled = true;
-                textBoxcodBoala.Enabled = true;
+                textBoxcodBoala_FK.Enabled = true;
                 pictureBoxCheckDiagnostice.Visible = true;
                 pictureBoxCancelDiagnostice.Visible = true;
             }
@@ -1439,7 +1445,7 @@ namespace Hospital_Management_System
             labelidDiagnostic_print.Text = "";
             textBoxidPacient.Text = "";
             textBoxidConsultatie.Text = "";
-            textBoxcodBoala.Text = "";
+            textBoxcodBoala_FK.Text = "";
         }
 
         private void pictureBoxCheckDiagnostice_Click(object sender, EventArgs e)
@@ -1459,10 +1465,10 @@ namespace Hospital_Management_System
                     {
                         command.Connection.Open();
                         command.Parameters.Add("newCons", textBoxidConsultatie.Text);
-                        if (textBoxcodBoala.Text == "")
+                        if (textBoxcodBoala_FK.Text == "")
                             command.Parameters.Add("newCod", null);
                         else
-                            command.Parameters.Add("newCod", textBoxcodBoala.Text);
+                            command.Parameters.Add("newCod", textBoxcodBoala_FK.Text);
 
                         int rowsUpdated = command.ExecuteNonQuery();
 
@@ -1472,7 +1478,7 @@ namespace Hospital_Management_System
                             loadDiagnostice();
                             textBoxidPacient.Enabled = false;
                             textBoxidConsultatie.Enabled = false;
-                            textBoxcodBoala.Enabled = false;
+                            textBoxcodBoala_FK.Enabled = false;
                             pictureBoxCheckDiagnostice.Visible = false;
                             pictureBoxCancelDiagnostice.Visible = false;
                             checkCheck(labelidDiagnostic_print.Text);
@@ -1506,10 +1512,10 @@ namespace Hospital_Management_System
                         command.Connection.Open();
                         command.Parameters.Add("newDiag", labelidDiagnostic_print.Text);
                         command.Parameters.Add("newCons", textBoxidConsultatie.Text);
-                        if (textBoxcodBoala.Text == "")
+                        if (textBoxcodBoala_FK.Text == "")
                             command.Parameters.Add("newCod", null);
                         else
-                            command.Parameters.Add("newCod", textBoxcodBoala.Text);
+                            command.Parameters.Add("newCod", textBoxcodBoala_FK.Text);
 
                         int rowsUpdated = command.ExecuteNonQuery();
 
@@ -1519,7 +1525,7 @@ namespace Hospital_Management_System
                             loadDiagnostice();
                             textBoxidPacient.Enabled = false;
                             textBoxidConsultatie.Enabled = false;
-                            textBoxcodBoala.Enabled = false;
+                            textBoxcodBoala_FK.Enabled = false;
                             pictureBoxCheckDiagnostice.Visible = false;
                             pictureBoxCancelDiagnostice.Visible = false;
                             checkCheck(labelidDiagnostic_print.Text);
@@ -1544,10 +1550,10 @@ namespace Hospital_Management_System
         private void pictureBoxCancelDiagnostice_Click(object sender, EventArgs e)
         {
             textBoxidConsultatie.Undo();
-            textBoxcodBoala.Undo();
+            textBoxcodBoala_FK.Undo();
             textBoxidPacient.Enabled = false;
             textBoxidConsultatie.Enabled = false;
-            textBoxcodBoala.Enabled = false;
+            textBoxcodBoala_FK.Enabled = false;
             pictureBoxCheckDiagnostice.Visible = false;
             pictureBoxCancelDiagnostice.Visible = false;
         }
@@ -1655,7 +1661,7 @@ namespace Hospital_Management_System
                                     loadDiagnostice();
                                     textBoxidPacient.Enabled = false;
                                     textBoxidConsultatie.Enabled = false;
-                                    textBoxcodBoala.Enabled = false;
+                                    textBoxcodBoala_FK.Enabled = false;
                                     pictureBoxCheckDiagnostice.Visible = false;
                                     pictureBoxCancelDiagnostice.Visible = false;
                                 }
@@ -1684,7 +1690,7 @@ namespace Hospital_Management_System
         {
             addOrUpdate = false;
             textBoxidConsultatie.Enabled = true;
-            textBoxcodBoala.Enabled = true;
+            textBoxcodBoala_FK.Enabled = true;
             pictureBoxCheckDiagnostice.Visible = true;
             pictureBoxCancelDiagnostice.Visible = true;
 
@@ -1785,7 +1791,1278 @@ namespace Hospital_Management_System
                     DeleteSimptom(labelidDiagnostic_print.Text, cod);
             }
         }
+        #endregion
 
+        #region BOLI
+        private void loadBoli()
+        {
+            String queryString = String.Format(@"SELECT * FROM BOLI ORDER BY codBoala ASC");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewBoli.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewBoli);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void loadComboSortBoli()
+        {
+            comboBoxColoaneBoli.Items.Clear();
+            comboBoxColoaneBoli.Items.Add("codBoala");
+            comboBoxColoaneBoli.Items.Add("denumireBoala");
+
+            comboBoxOrdineBoli.Items.Clear();
+            comboBoxOrdineBoli.Items.Add("Ascendent");
+            comboBoxOrdineBoli.Items.Add("Descendent");
+        }
+
+        private void buttonBoli_Click(object sender, EventArgs e)
+        {
+            // initializations
+            hidePanels();
+            panelBoli.Visible = true;
+            panelBoli.BringToFront();
+            textBoxdenumireBoala.Enabled = false;
+            labelcodBoala_print.Text = "";
+
+            pictureBoxCheckBoli.Visible = false;
+            pictureBoxCancelBoli.Visible = false;
+
+            // load data
+            loadBoli();
+            loadComboSortBoli();
+        }
+
+        private void dataGridViewBoli_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewBoli.Rows[index];
+            labelcodBoala_print.Text = selectedRow.Cells[0].Value.ToString();
+            textBoxdenumireBoala.Text = selectedRow.Cells[1].Value.ToString();
+        }
+
+        private void buttonEditeazaBoli_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = true;
+            if (textBoxdenumireBoala.Text == "")
+            {
+                MessageBox.Show("Selectează o intrare!", "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                pictureBoxCheckBoli.Visible = true;
+                pictureBoxCancelBoli.Visible = true;
+                textBoxdenumireBoala.Enabled = true;
+            }
+        }
+
+        private void buttonClearBoli_Click(object sender, EventArgs e)
+        {
+            labelcodBoala_print.Text = "";
+            textBoxdenumireBoala.Text = "";
+        }
+
+        private void pictureBoxCheckBoli_Click(object sender, EventArgs e)
+        {
+            if (addOrUpdate == true)
+            {
+                String queryString = String.Format(@"UPDATE BOLI
+                                                    SET denumireBoala = :newDenumireBoala
+                                                    WHERE codBoala = " + labelcodBoala_print.Text);
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newDenumireBoala", textBoxdenumireBoala.Text);
+
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date actualizate cu succes!", "Update.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadBoli();
+                            pictureBoxCheckBoli.Visible = false;
+                            pictureBoxCancelBoli.Visible = false;
+                            textBoxdenumireBoala.Enabled = false;
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                String queryString = String.Format(@"INSERT INTO BOLI(codBoala, denumireBoala)
+                                                     VALUES ( :newCodBoala, :newDenumireBoala)");
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newCodBoala", labelcodBoala_print.Text);
+                        command.Parameters.Add("newDenumireBoala", textBoxdenumireBoala.Text);
+
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date inserate cu succes!", "Insert.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadBoli();
+                            pictureBoxCheckBoli.Visible = false;
+                            pictureBoxCancelBoli.Visible = false;
+                            textBoxdenumireBoala.Enabled = false;
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+        }
+
+        private void pictureBoxCancelBoli_Click(object sender, EventArgs e)
+        {
+            textBoxdenumireBoala.Undo();
+
+            pictureBoxCheckBoli.Visible = false;
+            pictureBoxCancelBoli.Visible = false;
+            textBoxdenumireBoala.Enabled = false;
+        }
+
+        private void comboBoxColoaneBoli_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"SELECT * FROM BOLI ORDER BY " + comboBoxColoaneBoli.SelectedItem.ToString());
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewBoli.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewBoli);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void comboBoxOrdineBoli_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ord;
+            if (comboBoxOrdineBoli.SelectedIndex == 0)
+            {
+                ord = "ASC";
+            }
+            else
+            {
+                ord = "DESC";
+            }
+
+            String queryString = String.Format(@"SELECT * FROM BOLI ORDER BY " + comboBoxColoaneBoli.SelectedItem.ToString() + " " + ord);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewBoli.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewBoli);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonStergeBoli_Click(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"DELETE FROM BOLI
+                                                WHERE codBoala = " + labelcodBoala_print.Text);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    switch (MessageBox.Show("Ștergerea acestei boli poate duce la ștergerea sau modificarea unor date care au legătură cu respectiva intrare. Continuați?",
+                        "ATENȚIE", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))
+                    {
+                        case DialogResult.Yes:
+                            {
+                                command.Connection.Open();
+                                int rowsUpdated = command.ExecuteNonQuery();
+
+                                if (rowsUpdated > 0)
+                                {
+                                    MessageBox.Show("Date șterse cu succes!", "Delete.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    loadBoli();
+                                    pictureBoxCheckBoli.Visible = false;
+                                    pictureBoxCancelBoli.Visible = false;
+                                    textBoxdenumireBoala.Enabled = false;
+
+                                    labelcodBoala_print.Text = "";
+                                    textBoxdenumireBoala.Text = "";
+                                }
+                                break;
+                            }
+                        case DialogResult.No:
+                        case DialogResult.Cancel: { break; }
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonAdaugaBoli_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = false;
+            pictureBoxCancelBoli.Visible = true;
+            pictureBoxCheckBoli.Visible = true;
+            textBoxdenumireBoala.Enabled = true;
+
+            labelcodBoala_print.Text = "";
+            textBoxdenumireBoala.Text = "";
+
+            String queryString = String.Format(@"SELECT BOLI_codBoala_SEQ.NEXTVAL FROM DUAL");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    labelcodBoala_print.Text = command.ExecuteScalar().ToString();
+
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        #endregion
+
+        #region TRATAMENTE
+        private void loadTratamente()
+        {
+            String queryString = String.Format(@"SELECT * FROM TRATAMENTE ORDER BY idTratament ASC");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewTratamente.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewTratamente);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        void loadMedicamente_Adm()
+        {
+            checkedListBoxMedicamente.Items.Clear();
+            String queryString = String.Format(@"SELECT * FROM MEDICAMENTE ORDER BY idMedicament");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    OracleDataReader dataReader = command.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        checkedListBoxMedicamente.Items.Add(dataReader["idMedicament"].ToString() + ". " + dataReader["numeMedicament"].ToString() + " " + dataReader["dozaUnitate"].ToString() + "mg", false);
+                    }
+
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void loadComboSortTratamente()
+        {
+            comboBoxColoaneTratamente.Items.Clear();
+            comboBoxColoaneTratamente.Items.Add("idTratament");
+            comboBoxColoaneTratamente.Items.Add("codBoala");
+            comboBoxColoaneTratamente.Items.Add("perioadaAdministrare");
+
+            comboBoxOrdineTratamente.Items.Clear();
+            comboBoxOrdineTratamente.Items.Add("Ascendent");
+            comboBoxOrdineTratamente.Items.Add("Descendent");
+        }
+
+        private void buttonTratamente_Click(object sender, EventArgs e)
+        {
+            // initializations
+            hidePanels();
+            panelTratamente.Visible = true;
+            panelTratamente.BringToFront();
+            textBoxcodBoala_FK.Enabled = false;
+            textBoxperioadaAdministrare.Enabled = false;
+            richTextBoxTratamente.Enabled = false;
+            labelidTratament_print.Text = "";
+
+            pictureBoxCheckTratamente.Visible = false;
+            pictureBoxCancelTratamente.Visible = false;
+
+            // load data
+            loadTratamente();
+            loadComboSortTratamente();
+            loadMedicamente_Adm();
+        }
+
+        private void dataGridViewTratamente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewTratamente.Rows[index];
+            labelidTratament_print.Text = selectedRow.Cells[0].Value.ToString();
+            textBoxcodBoala_FK.Text = selectedRow.Cells[1].Value.ToString();
+            textBoxperioadaAdministrare.Text = selectedRow.Cells[2].Value.ToString();
+            richTextBoxTratamente.Text = selectedRow.Cells[3].Value.ToString();
+            checkCheckMed(labelidTratament_print.Text);
+        }
+
+        private void buttonEditeazaTratamente_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = true;
+            if (textBoxcodBoala_FK.Text == "")
+            {
+                MessageBox.Show("Selectează o intrare!", "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                pictureBoxCheckTratamente.Visible = true;
+                pictureBoxCancelTratamente.Visible = true;
+                textBoxcodBoala_FK.Enabled = true;
+                textBoxperioadaAdministrare.Enabled = true;
+                richTextBoxTratamente.Enabled = true;
+            }
+        }
+
+        private void buttonClearTratamente_Click(object sender, EventArgs e)
+        {
+            labelidTratament_print.Text = "";
+            textBoxcodBoala_FK.Text = "";
+            textBoxperioadaAdministrare.Text = "";
+            richTextBoxTratamente.Text = "";
+        }
+
+        private void pictureBoxCheckTratamente_Click(object sender, EventArgs e)
+        {
+            if (addOrUpdate == true)
+            {
+                String queryString = String.Format(@"UPDATE TRATAMENTE
+                                                    SET codBoala = :newCodBoala,
+                                                        perioadaAdministrare = :newPerioada,
+                                                        indicatii = :newIndicatii
+                                                    WHERE idTratament = " + labelidTratament_print.Text);
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newCodBoala", textBoxcodBoala_FK.Text);
+                        command.Parameters.Add("newPerioada", textBoxperioadaAdministrare.Text);
+                        command.Parameters.Add("newIndicatii", richTextBoxTratamente.Text);
+
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date actualizate cu succes!", "Update.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadTratamente();
+                            textBoxcodBoala_FK.Enabled = false;
+                            textBoxperioadaAdministrare.Enabled = false;
+                            richTextBoxTratamente.Enabled = false;
+                            pictureBoxCheckTratamente.Visible = false;
+                            pictureBoxCancelTratamente.Visible = false;
+                            checkCheckMed(labelidTratament_print.Text);
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                String queryString = String.Format(@"INSERT INTO TRATAMENTE(idTratament, codBoala, perioadaAdministrare, indicatii)
+                                                     VALUES (:newidTratament, :newCodBoala, :newPerioada, :newIndicatii)");
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newidTratament", labelidTratament_print.Text);
+                        command.Parameters.Add("newCodBoala", textBoxcodBoala_FK.Text);
+                        command.Parameters.Add("newPerioada", textBoxperioadaAdministrare.Text);
+                        command.Parameters.Add("newIndicatii", richTextBoxTratamente.Text);
+
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date inserate cu succes!", "Insert.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadTratamente();
+                            textBoxcodBoala_FK.Enabled = false;
+                            textBoxperioadaAdministrare.Enabled = false;
+                            richTextBoxTratamente.Enabled = false;
+                            pictureBoxCheckTratamente.Visible = false;
+                            pictureBoxCancelTratamente.Visible = false;
+                            checkCheckMed(labelidTratament_print.Text);
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void pictureBoxCancelTratamente_Click(object sender, EventArgs e)
+        {
+            textBoxcodBoala_FK.Undo();
+            textBoxperioadaAdministrare.Undo();
+            richTextBoxTratamente.Undo();
+
+            textBoxcodBoala_FK.Enabled = false;
+            textBoxperioadaAdministrare.Enabled = false;
+            richTextBoxTratamente.Enabled = false;
+            pictureBoxCheckTratamente.Visible = false;
+            pictureBoxCancelTratamente.Visible = false;
+        }
+
+        private void comboBoxColoaneTratamente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"SELECT * FROM TRATAMENTE ORDER BY " + comboBoxColoaneTratamente.SelectedItem.ToString());
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewTratamente.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewTratamente);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void comboBoxOrdineTratamente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ord;
+            if (comboBoxOrdineTratamente.SelectedIndex == 0)
+            {
+                ord = "ASC";
+            }
+            else
+            {
+                ord = "DESC";
+            }
+
+            String queryString = String.Format(@"SELECT * FROM TRATAMENTE ORDER BY " + comboBoxColoaneTratamente.SelectedItem.ToString() + " " + ord);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewTratamente.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewTratamente);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonStergeTratamente_Click(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"DELETE FROM TRATAMENTE
+                                                WHERE idTratament = " + labelidTratament_print.Text);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    switch (MessageBox.Show("Ștergerea acestui tratament poate duce la ștergerea sau modificarea unor date care au legătură cu respectiva intrare. Continuați?",
+                        "ATENȚIE", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))
+                    {
+                        case DialogResult.Yes:
+                            {
+                                command.Connection.Open();
+                                int rowsUpdated = command.ExecuteNonQuery();
+
+                                if (rowsUpdated > 0)
+                                {
+                                    MessageBox.Show("Date șterse cu succes!", "Delete.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    loadTratamente();
+                                    textBoxcodBoala_FK.Enabled = false;
+                                    textBoxperioadaAdministrare.Enabled = false;
+                                    richTextBoxTratamente.Enabled = false;
+                                    pictureBoxCheckTratamente.Visible = false;
+                                    pictureBoxCancelTratamente.Visible = false;
+
+                                    labelidTratament_print.Text = "";
+                                    textBoxcodBoala_FK.Text = "";
+                                    textBoxperioadaAdministrare.Text = "";
+                                    richTextBoxTratamente.Text = "";
+                                }
+                                break;
+                            }
+                        case DialogResult.No:
+                        case DialogResult.Cancel: { break; }
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonAdaugaTratamente_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = false;
+            textBoxcodBoala_FK.Enabled = true;
+            textBoxperioadaAdministrare.Enabled = true;
+            richTextBoxTratamente.Enabled = true;
+            pictureBoxCheckTratamente.Visible = true;
+            pictureBoxCancelTratamente.Visible = true;
+
+            labelidTratament_print.Text = "";
+            textBoxcodBoala_FK.Text = "";
+            textBoxperioadaAdministrare.Text = "";
+            richTextBoxTratamente.Text = "";
+
+            String queryString = String.Format(@"SELECT TRATAMENTE_idTratament_SEQ.NEXTVAL FROM DUAL");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    labelidTratament_print.Text = command.ExecuteScalar().ToString();
+
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        void AddMedicament(string idTrat, string idMed)
+        {
+            String queryString = String.Format(@"INSERT INTO TRATAMENTE_ADMINISTRATE VALUES(" + idTrat + ", " + idMed + ", 1)");
+
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        void DeleteMedicament(string idTrat, string idMed)
+        {
+            String queryString = String.Format(@"DELETE FROM TRATAMENTE_ADMINISTRATE WHERE idTratament = " + idTrat + " AND idMedicament = " + idMed);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonConfirmaMedicamente_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < checkedListBoxMedicamente.Items.Count; i++)
+            {
+                string cod = checkedListBoxMedicamente.Items[i].ToString().Substring(0, checkedListBoxMedicamente.Items[i].ToString().IndexOf(". "));
+                if (checkedListBoxMedicamente.GetItemChecked(i) == true)
+                    AddMedicament(labelidTratament_print.Text, cod);
+                else
+                    DeleteMedicament(labelidTratament_print.Text, cod);
+            }
+        }
+
+        void checkCheckMed(string idTrat)
+        {
+            String queryString = String.Format(@"SELECT * FROM TRATAMENTE_ADMINISTRATE WHERE idTratament = " + idTrat + " ORDER BY idMedicament");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    OracleDataReader dataReader = command.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        string idMedicament = dataReader["idMedicament"].ToString();
+
+                        for (int i = 0; i < checkedListBoxMedicamente.Items.Count; i++)
+                        {
+                            string cod = checkedListBoxMedicamente.Items[i].ToString().Substring(0, checkedListBoxMedicamente.Items[i].ToString().IndexOf(". "));
+                            if (idMedicament == cod)
+                                checkedListBoxMedicamente.SetItemChecked(i, true);
+                            else
+                                checkedListBoxMedicamente.SetItemChecked(i, false);
+                        }
+                    }
+
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        #endregion
+
+        #region MEDICAMENTE
+        private void loadMedicamente()
+        {
+            String queryString = String.Format(@"SELECT * FROM MEDICAMENTE ORDER BY idMedicament ASC");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewMedicamente.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewMedicamente);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void loadComboSortMedicamente()
+        {
+            comboBoxColoaneMedicamente.Items.Clear();
+            comboBoxColoaneMedicamente.Items.Add("idMedicament");
+            comboBoxColoaneMedicamente.Items.Add("numeMedicament");
+            comboBoxColoaneMedicamente.Items.Add("dozaUnitate");
+
+            comboBoxOrdineMedicamente.Items.Clear();
+            comboBoxOrdineMedicamente.Items.Add("Ascendent");
+            comboBoxOrdineMedicamente.Items.Add("Descendent");
+        }
+
+        private void buttonMedicamente_Click(object sender, EventArgs e)
+        {
+            // initializations
+            hidePanels();
+            panelMedicamente.Visible = true;
+            panelMedicamente.BringToFront();
+            textBoxnumeMedicament.Enabled = false;
+            textBoxtipMedicament.Enabled = false;
+            textBoxdozaUnitate.Enabled = false;
+            labelidMedicament_print.Text = "";
+
+            pictureBoxCheckMedicamente.Visible = false;
+            pictureBoxCancelMedicamente.Visible = false;
+
+            // load data
+            loadMedicamente();
+            loadComboSortMedicamente();
+        }
+
+        private void dataGridViewMedicamente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dataGridViewMedicamente.Rows[index];
+            labelidMedicament_print.Text = selectedRow.Cells[0].Value.ToString();
+            textBoxnumeMedicament.Text = selectedRow.Cells[1].Value.ToString();
+            textBoxtipMedicament.Text = selectedRow.Cells[2].Value.ToString();
+            textBoxdozaUnitate.Text = selectedRow.Cells[3].Value.ToString();
+        }
+
+        private void buttonEditeazaMedicamente_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = true;
+            if (textBoxnumeMedicament.Text == "")
+            {
+                MessageBox.Show("Selectează o intrare!", "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                pictureBoxCheckMedicamente.Visible = true;
+                pictureBoxCancelMedicamente.Visible = true;
+                textBoxnumeMedicament.Enabled = true;
+                textBoxtipMedicament.Enabled = true;
+                textBoxdozaUnitate.Enabled = true;
+            }
+        }
+
+        private void buttonClearMedicamente_Click(object sender, EventArgs e)
+        {
+            labelidMedicament_print.Text = "";
+            textBoxnumeMedicament.Text = "";
+            textBoxtipMedicament.Text = "";
+            textBoxdozaUnitate.Text = "";
+        }
+
+        private void pictureBoxCheckMedicamente_Click(object sender, EventArgs e)
+        {
+            if (addOrUpdate == true)
+            {
+                String queryString = String.Format(@"UPDATE MEDICAMENTE
+                                                    SET numeMedicament = :newNume,
+                                                        tipMedicament = :newTip,
+                                                        dozaUnitate = :newDoza
+                                                    WHERE idMedicament = " + labelidMedicament_print.Text);
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newNume", textBoxnumeMedicament.Text);
+                        command.Parameters.Add("newTip", textBoxtipMedicament.Text);
+                        command.Parameters.Add("newDoza", textBoxdozaUnitate.Text);
+
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date actualizate cu succes!", "Update.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadMedicamente();
+                            textBoxnumeMedicament.Enabled = false;
+                            textBoxtipMedicament.Enabled = false;
+                            textBoxdozaUnitate.Enabled = false;
+                            pictureBoxCheckMedicamente.Visible = false;
+                            pictureBoxCancelMedicamente.Visible = false;
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                String queryString = String.Format(@"INSERT INTO MEDICAMENTE(idMedicament, numeMedicament, tipMedicament, dozaUnitate)
+                                                     VALUES (:newid, :newNume, :newTip, :newDoza)");
+                StringBuilder errorMessages = new StringBuilder();
+
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+                {
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
+                    {
+                        command.Connection.Open();
+                        command.Parameters.Add("newid", labelidMedicament_print.Text);
+                        command.Parameters.Add("newNume", textBoxnumeMedicament.Text);
+                        command.Parameters.Add("newTip", textBoxtipMedicament.Text);
+                        command.Parameters.Add("newDoza", textBoxdozaUnitate.Text);
+
+                        int rowsUpdated = command.ExecuteNonQuery();
+
+                        if (rowsUpdated > 0)
+                        {
+                            MessageBox.Show("Date inserate cu succes!", "Insert.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadMedicamente();
+                            textBoxnumeMedicament.Enabled = false;
+                            textBoxtipMedicament.Enabled = false;
+                            textBoxdozaUnitate.Enabled = false;
+                            pictureBoxCheckMedicamente.Visible = false;
+                            pictureBoxCancelMedicamente.Visible = false;
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+        }
+
+        private void pictureBoxCancelMedicamente_Click(object sender, EventArgs e)
+        {
+            textBoxnumeMedicament.Undo();
+            textBoxtipMedicament.Undo();
+            textBoxdozaUnitate.Undo();
+
+            textBoxnumeMedicament.Enabled = false;
+            textBoxtipMedicament.Enabled = false;
+            textBoxdozaUnitate.Enabled = false;
+            pictureBoxCheckMedicamente.Visible = false;
+            pictureBoxCancelMedicamente.Visible = false;
+        }
+
+        private void comboBoxColoaneMedicamente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"SELECT * FROM MEDICAMENTE ORDER BY " + comboBoxColoaneMedicamente.SelectedItem.ToString());
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewMedicamente.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewMedicamente);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void comboBoxOrdineMedicamente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ord;
+            if (comboBoxOrdineMedicamente.SelectedIndex == 0)
+            {
+                ord = "ASC";
+            }
+            else
+            {
+                ord = "DESC";
+            }
+
+            String queryString = String.Format(@"SELECT * FROM MEDICAMENTE ORDER BY " + comboBoxColoaneMedicamente.SelectedItem.ToString() + " " + ord);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewMedicamente.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewMedicamente);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonStergeMedicamente_Click(object sender, EventArgs e)
+        {
+            String queryString = String.Format(@"DELETE FROM MEDICAMENTE
+                                                WHERE idMedicament = " + labelidMedicament_print.Text);
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    switch (MessageBox.Show("Ștergerea acestui medicament poate duce la ștergerea sau modificarea unor date care au legătură cu respectiva intrare. Continuați?",
+                        "ATENȚIE", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information))
+                    {
+                        case DialogResult.Yes:
+                            {
+                                command.Connection.Open();
+                                int rowsUpdated = command.ExecuteNonQuery();
+
+                                if (rowsUpdated > 0)
+                                {
+                                    MessageBox.Show("Date șterse cu succes!", "Delete.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    loadMedicamente();
+                                    textBoxnumeMedicament.Enabled = false;
+                                    textBoxtipMedicament.Enabled = false;
+                                    textBoxdozaUnitate.Enabled = false;
+                                    pictureBoxCheckMedicamente.Visible = false;
+                                    pictureBoxCancelMedicamente.Visible = false;
+
+                                    labelidMedicament_print.Text = "";
+                                    textBoxnumeMedicament.Text = "";
+                                    textBoxtipMedicament.Text = "";
+                                    textBoxdozaUnitate.Text = "";
+                                }
+                                break;
+                            }
+                        case DialogResult.No:
+                        case DialogResult.Cancel: { break; }
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonAdaugaMedicamente_Click(object sender, EventArgs e)
+        {
+            addOrUpdate = false;
+            textBoxnumeMedicament.Enabled = true;
+            textBoxtipMedicament.Enabled = true;
+            textBoxdozaUnitate.Enabled = true;
+            pictureBoxCheckMedicamente.Visible = true;
+            pictureBoxCancelMedicamente.Visible = true;
+
+            labelidMedicament_print.Text = "";
+            textBoxnumeMedicament.Text = "";
+            textBoxtipMedicament.Text = "";
+            textBoxdozaUnitate.Text = "";
+
+            String queryString = String.Format(@"SELECT MEDICAMENTE_idMedicament_SEQ.NEXTVAL FROM DUAL");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    labelidMedicament_print.Text = command.ExecuteScalar().ToString();
+
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         #endregion
     }
 }
