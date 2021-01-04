@@ -21,6 +21,8 @@ namespace Hospital_Management_System
         public doctorLogin()
         {
             InitializeComponent();
+            textBoxParafa.Text = "100000";
+            textBoxCNP.Text = "2980807452812";
         }
 
         private void button2_Click(object sender, EventArgs e)
