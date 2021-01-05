@@ -68,7 +68,7 @@ namespace Hospital_Management_System
 
                     while (dataReader.Read())
                     {
-                        string functie = dataReader["numeFunctie"].ToString();
+                        string functie = dataReader["codFunctie"].ToString() + ". " + dataReader["numeFunctie"].ToString();
                         comboBoxToBeFilled.Items.Add(functie);
                     }
                 }
@@ -366,7 +366,7 @@ namespace Hospital_Management_System
             string CNP = textBoxCNP.Text.Trim();
             string telefon = textBoxTelefon.Text.Trim();
             string email = textBoxEmail.Text.Trim();
-            int codFunctie = (comboBoxFunctii.SelectedIndex + 1);
+            int codFunctie = int.Parse(comboBoxFunctii.SelectedItem.ToString().Substring(0, comboBoxFunctii.SelectedItem.ToString().IndexOf(". ")));
             string idSectie = textBoxIDSectie.Text.Trim();
 
             String queryString = String.Format(@"INSERT INTO DOCTORI VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}', {6}, {7})",
