@@ -2521,15 +2521,15 @@ namespace Hospital_Management_System
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelApp);
+            this.Controls.Add(this.panelTratamente);
+            this.Controls.Add(this.panelMedicamente);
+            this.Controls.Add(this.panelPacientiiMei);
             this.Controls.Add(this.panelDiagnostice);
             this.Controls.Add(this.panelConsultatii);
             this.Controls.Add(this.panelPacienti);
             this.Controls.Add(this.panelDatePersonale);
             this.Controls.Add(this.panelBoli);
             this.Controls.Add(this.panelCautare);
-            this.Controls.Add(this.panelTratamente);
-            this.Controls.Add(this.panelMedicamente);
-            this.Controls.Add(this.panelPacientiiMei);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "doctorMain";

@@ -1725,73 +1725,51 @@ namespace Hospital_Management_System
             }
         }
 
-        void AddSimptom(string idDiag, string codSim)
-        {
-            String queryString = String.Format(@"INSERT INTO DIAGNOSTICE_SIMPTOME VALUES(" + idDiag + ", " + codSim + ")");
-            
-            StringBuilder errorMessages = new StringBuilder();
-
-            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
-            {
-                OracleCommand command = new OracleCommand(queryString, connection);
-                try
-                {
-                    command.Connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (OracleException ex)
-                {
-                    for (int i = 0; i < ex.Errors.Count; i++)
-                    {
-                        errorMessages.Append("Index #" + i + "\n" +
-                            "Message: " + ex.Errors[i].Message + "\n" +
-                            "LineNumber: " + ex.Errors[i].Number + "\n" +
-                            "Source: " + ex.Errors[i].Source + "\n" +
-                            "Procedure: " + ex.Errors[i].Procedure + "\n");
-                    }
-                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        void DeleteSimptom(string idDiag, string codSim)
-        {
-            String queryString = String.Format(@"DELETE FROM DIAGNOSTICE_SIMPTOME WHERE idDiagnostic = " + idDiag + " AND codSimptom = " + codSim);
-            StringBuilder errorMessages = new StringBuilder();
-
-            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
-            {
-                OracleCommand command = new OracleCommand(queryString, connection);
-                try
-                {
-                    command.Connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (OracleException ex)
-                {
-                    for (int i = 0; i < ex.Errors.Count; i++)
-                    {
-                        errorMessages.Append("Index #" + i + "\n" +
-                            "Message: " + ex.Errors[i].Message + "\n" +
-                            "LineNumber: " + ex.Errors[i].Number + "\n" +
-                            "Source: " + ex.Errors[i].Source + "\n" +
-                            "Procedure: " + ex.Errors[i].Procedure + "\n");
-                    }
-                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void buttonConfirmaSimptome_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < checkedListBoxSimptome.Items.Count; i++)
+
+            String queryStringAdd = String.Format(@"INSERT INTO DIAGNOSTICE_SIMPTOME VALUES(:idDiagnostic, :codSimptom)");
+            String queryStringDelete = String.Format(@"DELETE FROM DIAGNOSTICE_SIMPTOME WHERE idDiagnostic = :idDiagnostic AND codSimptom = :codSimptom");
+
+            StringBuilder errorMessages = new StringBuilder();
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
             {
-                string cod = checkedListBoxSimptome.Items[i].ToString().Substring(0, checkedListBoxSimptome.Items[i].ToString().IndexOf(". "));
-                if (checkedListBoxSimptome.GetItemChecked(i) == true)
-                    AddSimptom(labelidDiagnostic_print.Text, cod); 
-                else
-                    DeleteSimptom(labelidDiagnostic_print.Text, cod);
+                OracleCommand command = new OracleCommand(queryStringAdd, connection);
+                try
+                {
+                    command.Connection.Open();
+
+                    for (int i = 0; i < checkedListBoxSimptome.Items.Count; i++)
+                    {
+                        string cod = checkedListBoxSimptome.Items[i].ToString().Substring(0, checkedListBoxSimptome.Items[i].ToString().IndexOf(". "));
+                        if (checkedListBoxSimptome.GetItemChecked(i) == true)
+                        {
+                            command.CommandText = queryStringAdd;
+                        }
+                        else
+                        {
+                            command.CommandText = queryStringDelete;
+                        }
+                        command.Parameters.Clear();
+                        command.Parameters.Add("idDiagnostic", labelidDiagnostic_print.Text);
+                        command.Parameters.Add("codSimptom", cod);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            MessageBox.Show("Simpotme modificate!", "Modificare.", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
 
@@ -2569,73 +2547,51 @@ namespace Hospital_Management_System
             }
         }
 
-        void AddMedicament(string idTrat, string idMed)
-        {
-            String queryString = String.Format(@"INSERT INTO TRATAMENTE_ADMINISTRATE VALUES(" + idTrat + ", " + idMed + ", 1)");
-
-            StringBuilder errorMessages = new StringBuilder();
-
-            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
-            {
-                OracleCommand command = new OracleCommand(queryString, connection);
-                try
-                {
-                    command.Connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (OracleException ex)
-                {
-                    for (int i = 0; i < ex.Errors.Count; i++)
-                    {
-                        errorMessages.Append("Index #" + i + "\n" +
-                            "Message: " + ex.Errors[i].Message + "\n" +
-                            "LineNumber: " + ex.Errors[i].Number + "\n" +
-                            "Source: " + ex.Errors[i].Source + "\n" +
-                            "Procedure: " + ex.Errors[i].Procedure + "\n");
-                    }
-                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        void DeleteMedicament(string idTrat, string idMed)
-        {
-            String queryString = String.Format(@"DELETE FROM TRATAMENTE_ADMINISTRATE WHERE idTratament = " + idTrat + " AND idMedicament = " + idMed);
-            StringBuilder errorMessages = new StringBuilder();
-
-            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
-            {
-                OracleCommand command = new OracleCommand(queryString, connection);
-                try
-                {
-                    command.Connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (OracleException ex)
-                {
-                    for (int i = 0; i < ex.Errors.Count; i++)
-                    {
-                        errorMessages.Append("Index #" + i + "\n" +
-                            "Message: " + ex.Errors[i].Message + "\n" +
-                            "LineNumber: " + ex.Errors[i].Number + "\n" +
-                            "Source: " + ex.Errors[i].Source + "\n" +
-                            "Procedure: " + ex.Errors[i].Procedure + "\n");
-                    }
-                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void buttonConfirmaMedicamente_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < checkedListBoxMedicamente.Items.Count; i++)
+           
+            String queryStringAdd = String.Format(@"INSERT INTO TRATAMENTE_ADMINISTRATE VALUES(:idTratament, :idMedicament, 1)");
+            String queryStringDelete = String.Format(@"DELETE FROM TRATAMENTE_ADMINISTRATE WHERE idTratament = :idTratament AND idMedicament = :idMedicament");
+
+            StringBuilder errorMessages = new StringBuilder();
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
             {
-                string cod = checkedListBoxMedicamente.Items[i].ToString().Substring(0, checkedListBoxMedicamente.Items[i].ToString().IndexOf(". "));
-                if (checkedListBoxMedicamente.GetItemChecked(i) == true)
-                    AddMedicament(labelidTratament_print.Text, cod);
-                else
-                    DeleteMedicament(labelidTratament_print.Text, cod);
+                OracleCommand command = new OracleCommand(queryStringAdd, connection);
+                try
+                {
+                    command.Connection.Open();
+
+                    for (int i = 0; i < checkedListBoxMedicamente.Items.Count; i++)
+                    {
+                        string cod = checkedListBoxMedicamente.Items[i].ToString().Substring(0, checkedListBoxMedicamente.Items[i].ToString().IndexOf(". "));
+                        if (checkedListBoxMedicamente.GetItemChecked(i) == true)
+                        {
+                            command.CommandText = queryStringAdd;
+                        }
+                        else
+                        {
+                            command.CommandText = queryStringDelete;
+                        }
+                        command.Parameters.Clear();
+                        command.Parameters.Add("idTratament", labelidTratament_print.Text);
+                        command.Parameters.Add("idMedicament", cod);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            MessageBox.Show("Medicamente modificate!", "Modificare.", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         void checkCheckMed(string idTrat)
