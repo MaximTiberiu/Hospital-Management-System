@@ -317,9 +317,11 @@ namespace Hospital_Management_System
             this.dataGridViewMedicamente = new System.Windows.Forms.DataGridView();
             this.buttonStatistici = new System.Windows.Forms.Button();
             this.panelStatistici = new System.Windows.Forms.Panel();
-            this.dataGridViewStatistici = new System.Windows.Forms.DataGridView();
-            this.linkLabelGroupHaving = new System.Windows.Forms.LinkLabel();
             this.linkLabelNumarSpitale = new System.Windows.Forms.LinkLabel();
+            this.linkLabelGroupHaving = new System.Windows.Forms.LinkLabel();
+            this.dataGridViewStatistici = new System.Windows.Forms.DataGridView();
+            this.textBoxNrCons = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJudete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckJudete)).BeginInit();
@@ -3784,6 +3786,8 @@ namespace Hospital_Management_System
             // 
             this.panelStatistici.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelStatistici.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panelStatistici.Controls.Add(this.label6);
+            this.panelStatistici.Controls.Add(this.textBoxNrCons);
             this.panelStatistici.Controls.Add(this.linkLabelNumarSpitale);
             this.panelStatistici.Controls.Add(this.linkLabelGroupHaving);
             this.panelStatistici.Controls.Add(this.dataGridViewStatistici);
@@ -3791,6 +3795,30 @@ namespace Hospital_Management_System
             this.panelStatistici.Name = "panelStatistici";
             this.panelStatistici.Size = new System.Drawing.Size(1984, 936);
             this.panelStatistici.TabIndex = 72;
+            // 
+            // linkLabelNumarSpitale
+            // 
+            this.linkLabelNumarSpitale.AutoSize = true;
+            this.linkLabelNumarSpitale.Font = new System.Drawing.Font("Segoe UI", 14.2F, System.Drawing.FontStyle.Bold);
+            this.linkLabelNumarSpitale.Location = new System.Drawing.Point(8, 152);
+            this.linkLabelNumarSpitale.Name = "linkLabelNumarSpitale";
+            this.linkLabelNumarSpitale.Size = new System.Drawing.Size(656, 32);
+            this.linkLabelNumarSpitale.TabIndex = 5;
+            this.linkLabelNumarSpitale.TabStop = true;
+            this.linkLabelNumarSpitale.Text = "Numărul spitalelor la nivel de județ, respectiv localitate.";
+            this.linkLabelNumarSpitale.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNumarSpitale_LinkClicked);
+            // 
+            // linkLabelGroupHaving
+            // 
+            this.linkLabelGroupHaving.AutoSize = true;
+            this.linkLabelGroupHaving.Font = new System.Drawing.Font("Segoe UI", 14.2F, System.Drawing.FontStyle.Bold);
+            this.linkLabelGroupHaving.Location = new System.Drawing.Point(8, 48);
+            this.linkLabelGroupHaving.Name = "linkLabelGroupHaving";
+            this.linkLabelGroupHaving.Size = new System.Drawing.Size(833, 40);
+            this.linkLabelGroupHaving.TabIndex = 4;
+            this.linkLabelGroupHaving.TabStop = true;
+            this.linkLabelGroupHaving.Text = "Afișare medici care au efectuat mai mult de x consultații.";
+            this.linkLabelGroupHaving.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGroupHaving_LinkClicked);
             // 
             // dataGridViewStatistici
             // 
@@ -3810,29 +3838,23 @@ namespace Hospital_Management_System
             this.dataGridViewStatistici.Size = new System.Drawing.Size(1216, 920);
             this.dataGridViewStatistici.TabIndex = 2;
             // 
-            // linkLabelGroupHaving
+            // textBoxNrCons
             // 
-            this.linkLabelGroupHaving.AutoSize = true;
-            this.linkLabelGroupHaving.Font = new System.Drawing.Font("Segoe UI", 14.2F, System.Drawing.FontStyle.Bold);
-            this.linkLabelGroupHaving.Location = new System.Drawing.Point(8, 48);
-            this.linkLabelGroupHaving.Name = "linkLabelGroupHaving";
-            this.linkLabelGroupHaving.Size = new System.Drawing.Size(667, 32);
-            this.linkLabelGroupHaving.TabIndex = 4;
-            this.linkLabelGroupHaving.TabStop = true;
-            this.linkLabelGroupHaving.Text = "Afișare medici care au efectuat mai mult de 5 consultații.";
-            this.linkLabelGroupHaving.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGroupHaving_LinkClicked);
+            this.textBoxNrCons.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxNrCons.Location = new System.Drawing.Point(96, 88);
+            this.textBoxNrCons.Name = "textBoxNrCons";
+            this.textBoxNrCons.Size = new System.Drawing.Size(248, 43);
+            this.textBoxNrCons.TabIndex = 6;
             // 
-            // linkLabelNumarSpitale
+            // label6
             // 
-            this.linkLabelNumarSpitale.AutoSize = true;
-            this.linkLabelNumarSpitale.Font = new System.Drawing.Font("Segoe UI", 14.2F, System.Drawing.FontStyle.Bold);
-            this.linkLabelNumarSpitale.Location = new System.Drawing.Point(8, 96);
-            this.linkLabelNumarSpitale.Name = "linkLabelNumarSpitale";
-            this.linkLabelNumarSpitale.Size = new System.Drawing.Size(820, 40);
-            this.linkLabelNumarSpitale.TabIndex = 5;
-            this.linkLabelNumarSpitale.TabStop = true;
-            this.linkLabelNumarSpitale.Text = "Numărul spitalelor la nivel de județ, repsectiv localitate.";
-            this.linkLabelNumarSpitale.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNumarSpitale_LinkClicked);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(48, 88);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 38);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "x";
             // 
             // adminMain
             // 
@@ -4236,5 +4258,7 @@ namespace Hospital_Management_System
         private System.Windows.Forms.LinkLabel linkLabelGroupHaving;
         private System.Windows.Forms.DataGridView dataGridViewStatistici;
         private System.Windows.Forms.LinkLabel linkLabelNumarSpitale;
+        private System.Windows.Forms.TextBox textBoxNrCons;
+        private System.Windows.Forms.Label label6;
     }
 }

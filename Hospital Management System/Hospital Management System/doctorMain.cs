@@ -1404,7 +1404,7 @@ namespace Hospital_Management_System
             
             textBoxidPacient.Enabled = false;
             textBoxidConsultatie.Enabled = false;
-            textBoxcodBoala_FK.Enabled = false;
+            textBoxcodBoala.Enabled = false;
             pictureBoxCheckDiagnostice.Visible = false;
             pictureBoxCancelDiagnostice.Visible = false;
 
@@ -1421,7 +1421,7 @@ namespace Hospital_Management_System
             labelidDiagnostic_print.Text = selectedRow.Cells[0].Value.ToString();
             textBoxidPacient.Text = selectedRow.Cells[5].Value.ToString();
             textBoxidConsultatie.Text = selectedRow.Cells[1].Value.ToString();
-            textBoxcodBoala_FK.Text = selectedRow.Cells[2].Value.ToString();
+            textBoxcodBoala.Text = selectedRow.Cells[2].Value.ToString();
             checkCheck(labelidDiagnostic_print.Text);
         }
 
@@ -1436,7 +1436,7 @@ namespace Hospital_Management_System
             {
                 textBoxidPacient.Enabled = false;
                 textBoxidConsultatie.Enabled = true;
-                textBoxcodBoala_FK.Enabled = true;
+                textBoxcodBoala.Enabled = true;
                 pictureBoxCheckDiagnostice.Visible = true;
                 pictureBoxCancelDiagnostice.Visible = true;
             }
@@ -1447,7 +1447,7 @@ namespace Hospital_Management_System
             labelidDiagnostic_print.Text = "";
             textBoxidPacient.Text = "";
             textBoxidConsultatie.Text = "";
-            textBoxcodBoala_FK.Text = "";
+            textBoxcodBoala.Text = "";
         }
 
         private void pictureBoxCheckDiagnostice_Click(object sender, EventArgs e)
@@ -1467,10 +1467,10 @@ namespace Hospital_Management_System
                     {
                         command.Connection.Open();
                         command.Parameters.Add("newCons", textBoxidConsultatie.Text);
-                        if (textBoxcodBoala_FK.Text == "")
+                        if (textBoxcodBoala.Text == "")
                             command.Parameters.Add("newCod", null);
                         else
-                            command.Parameters.Add("newCod", textBoxcodBoala_FK.Text);
+                            command.Parameters.Add("newCod", textBoxcodBoala.Text);
 
                         int rowsUpdated = command.ExecuteNonQuery();
 
@@ -1480,7 +1480,7 @@ namespace Hospital_Management_System
                             loadDiagnostice();
                             textBoxidPacient.Enabled = false;
                             textBoxidConsultatie.Enabled = false;
-                            textBoxcodBoala_FK.Enabled = false;
+                            textBoxcodBoala.Enabled = false;
                             pictureBoxCheckDiagnostice.Visible = false;
                             pictureBoxCancelDiagnostice.Visible = false;
                             checkCheck(labelidDiagnostic_print.Text);
@@ -1514,10 +1514,10 @@ namespace Hospital_Management_System
                         command.Connection.Open();
                         command.Parameters.Add("newDiag", labelidDiagnostic_print.Text);
                         command.Parameters.Add("newCons", textBoxidConsultatie.Text);
-                        if (textBoxcodBoala_FK.Text == "")
+                        if (textBoxcodBoala.Text == "")
                             command.Parameters.Add("newCod", null);
                         else
-                            command.Parameters.Add("newCod", textBoxcodBoala_FK.Text);
+                            command.Parameters.Add("newCod", textBoxcodBoala.Text);
 
                         int rowsUpdated = command.ExecuteNonQuery();
 
@@ -1527,7 +1527,7 @@ namespace Hospital_Management_System
                             loadDiagnostice();
                             textBoxidPacient.Enabled = false;
                             textBoxidConsultatie.Enabled = false;
-                            textBoxcodBoala_FK.Enabled = false;
+                            textBoxcodBoala.Enabled = false;
                             pictureBoxCheckDiagnostice.Visible = false;
                             pictureBoxCancelDiagnostice.Visible = false;
                             checkCheck(labelidDiagnostic_print.Text);
@@ -1552,10 +1552,10 @@ namespace Hospital_Management_System
         private void pictureBoxCancelDiagnostice_Click(object sender, EventArgs e)
         {
             textBoxidConsultatie.Undo();
-            textBoxcodBoala_FK.Undo();
+            textBoxcodBoala.Undo();
             textBoxidPacient.Enabled = false;
             textBoxidConsultatie.Enabled = false;
-            textBoxcodBoala_FK.Enabled = false;
+            textBoxcodBoala.Enabled = false;
             pictureBoxCheckDiagnostice.Visible = false;
             pictureBoxCancelDiagnostice.Visible = false;
         }
@@ -1663,7 +1663,7 @@ namespace Hospital_Management_System
                                     loadDiagnostice();
                                     textBoxidPacient.Enabled = false;
                                     textBoxidConsultatie.Enabled = false;
-                                    textBoxcodBoala_FK.Enabled = false;
+                                    textBoxcodBoala.Enabled = false;
                                     pictureBoxCheckDiagnostice.Visible = false;
                                     pictureBoxCancelDiagnostice.Visible = false;
                                 }
@@ -1692,7 +1692,7 @@ namespace Hospital_Management_System
         {
             addOrUpdate = false;
             textBoxidConsultatie.Enabled = true;
-            textBoxcodBoala_FK.Enabled = true;
+            textBoxcodBoala.Enabled = true;
             pictureBoxCheckDiagnostice.Visible = true;
             pictureBoxCancelDiagnostice.Visible = true;
 

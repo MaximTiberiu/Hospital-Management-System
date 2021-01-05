@@ -212,13 +212,13 @@ namespace Hospital_Management_System
             this.dataGridViewTratamente = new System.Windows.Forms.DataGridView();
             this.buttonCautare = new System.Windows.Forms.Button();
             this.panelCautare = new System.Windows.Forms.Panel();
+            this.textBoxcodParafaCautare = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonClearCautare = new System.Windows.Forms.Button();
             this.buttonCauta = new System.Windows.Forms.Button();
-            this.dataGridViewCautare = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
             this.textBoxcodBoalaCautare = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxcodParafaCautare = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dataGridViewCautare = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelMedicamente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelMedicamente)).BeginInit();
@@ -2419,6 +2419,25 @@ namespace Hospital_Management_System
             this.panelCautare.Size = new System.Drawing.Size(1984, 936);
             this.panelCautare.TabIndex = 92;
             // 
+            // textBoxcodParafaCautare
+            // 
+            this.textBoxcodParafaCautare.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxcodParafaCautare.Location = new System.Drawing.Point(184, 56);
+            this.textBoxcodParafaCautare.Name = "textBoxcodParafaCautare";
+            this.textBoxcodParafaCautare.Size = new System.Drawing.Size(200, 39);
+            this.textBoxcodParafaCautare.TabIndex = 48;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(24, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 38);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "codParafă:";
+            // 
             // buttonClearCautare
             // 
             this.buttonClearCautare.BackColor = System.Drawing.Color.Maroon;
@@ -2445,6 +2464,25 @@ namespace Hospital_Management_System
             this.buttonCauta.UseVisualStyleBackColor = false;
             this.buttonCauta.Click += new System.EventHandler(this.buttonCauta_Click);
             // 
+            // textBoxcodBoalaCautare
+            // 
+            this.textBoxcodBoalaCautare.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxcodBoalaCautare.Location = new System.Drawing.Point(184, 104);
+            this.textBoxcodBoalaCautare.Name = "textBoxcodBoalaCautare";
+            this.textBoxcodBoalaCautare.Size = new System.Drawing.Size(200, 39);
+            this.textBoxcodBoalaCautare.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(32, 104);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 38);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "codBoala:";
+            // 
             // dataGridViewCautare
             // 
             this.dataGridViewCautare.AllowUserToAddRows = false;
@@ -2463,51 +2501,12 @@ namespace Hospital_Management_System
             this.dataGridViewCautare.Size = new System.Drawing.Size(1216, 920);
             this.dataGridViewCautare.TabIndex = 2;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(32, 104);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(142, 38);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "codBoala:";
-            // 
-            // textBoxcodBoalaCautare
-            // 
-            this.textBoxcodBoalaCautare.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxcodBoalaCautare.Location = new System.Drawing.Point(184, 104);
-            this.textBoxcodBoalaCautare.Name = "textBoxcodBoalaCautare";
-            this.textBoxcodBoalaCautare.Size = new System.Drawing.Size(200, 39);
-            this.textBoxcodBoalaCautare.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 38);
-            this.label2.TabIndex = 47;
-            this.label2.Text = "codParafă:";
-            // 
-            // textBoxcodParafaCautare
-            // 
-            this.textBoxcodParafaCautare.Font = new System.Drawing.Font("Segoe UI Semibold", 14.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxcodParafaCautare.Location = new System.Drawing.Point(184, 56);
-            this.textBoxcodParafaCautare.Name = "textBoxcodParafaCautare";
-            this.textBoxcodParafaCautare.Size = new System.Drawing.Size(200, 39);
-            this.textBoxcodParafaCautare.TabIndex = 48;
-            // 
             // doctorMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(2261, 1355);
-            this.Controls.Add(this.panelCautare);
             this.Controls.Add(this.buttonCautare);
             this.Controls.Add(this.buttonMedicamente);
             this.Controls.Add(this.buttonDiagnostice);
@@ -2522,14 +2521,15 @@ namespace Hospital_Management_System
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.labelApp);
-            this.Controls.Add(this.panelTratamente);
-            this.Controls.Add(this.panelMedicamente);
-            this.Controls.Add(this.panelPacientiiMei);
             this.Controls.Add(this.panelDiagnostice);
             this.Controls.Add(this.panelConsultatii);
             this.Controls.Add(this.panelPacienti);
             this.Controls.Add(this.panelDatePersonale);
             this.Controls.Add(this.panelBoli);
+            this.Controls.Add(this.panelCautare);
+            this.Controls.Add(this.panelTratamente);
+            this.Controls.Add(this.panelMedicamente);
+            this.Controls.Add(this.panelPacientiiMei);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "doctorMain";

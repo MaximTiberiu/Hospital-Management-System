@@ -4377,39 +4377,47 @@ namespace Hospital_Management_System
 
         private void linkLabelGroupHaving_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            String queryString = String.Format(@"SELECT d.codParafa, d.nume, d.prenume, d.telefon, d.email, d.codFunctie, d.idSectie, COUNT(c.idConsultatie) totalConsultatii
-                                                FROM DOCTORI d JOIN CONSULTATII c ON d.codParafa = c.codParafa
-                                                GROUP BY d.codParafa, d.nume, d.prenume, d.telefon, d.email, d.codFunctie, d.idSectie
-                                                HAVING COUNT(c.idConsultatie) > 5
-                                                ORDER BY totalConsultatii DESC");
-            StringBuilder errorMessages = new StringBuilder();
-
-            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            if (textBoxNrCons.Text != "")
             {
-                OracleCommand command = new OracleCommand(queryString, connection);
-                try
-                {
-                    command.Connection.Open();
-                    command.ExecuteNonQuery();
-                    DataTable dataTable = new DataTable();
-                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
-                    dataAdapter.Fill(dataTable);
-                    dataGridViewStatistici.DataSource = dataTable;
+                String queryString = String.Format(@"SELECT d.codParafa, d.nume, d.prenume, d.telefon, d.email, d.codFunctie, d.idSectie, COUNT(c.idConsultatie) totalConsultatii
+                                                    FROM DOCTORI d LEFT JOIN CONSULTATII c ON d.codParafa = c.codParafa
+                                                    GROUP BY d.codParafa, d.nume, d.prenume, d.telefon, d.email, d.codFunctie, d.idSectie
+                                                    HAVING COUNT(c.idConsultatie) >= " + textBoxNrCons.Text + 
+                                                    " ORDER BY totalConsultatii DESC");
+                StringBuilder errorMessages = new StringBuilder();
 
-                    autoSizeDataGridView(dataGridViewStatistici);
-                }
-                catch (OracleException ex)
+                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
                 {
-                    for (int i = 0; i < ex.Errors.Count; i++)
+                    OracleCommand command = new OracleCommand(queryString, connection);
+                    try
                     {
-                        errorMessages.Append("Index #" + i + "\n" +
-                            "Message: " + ex.Errors[i].Message + "\n" +
-                            "LineNumber: " + ex.Errors[i].Number + "\n" +
-                            "Source: " + ex.Errors[i].Source + "\n" +
-                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        command.Connection.Open();
+                        command.ExecuteNonQuery();
+                        DataTable dataTable = new DataTable();
+                        OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                        dataAdapter.Fill(dataTable);
+                        dataGridViewStatistici.DataSource = dataTable;
+
+                        autoSizeDataGridView(dataGridViewStatistici);
+                        textBoxNrCons.Text = "";
                     }
-                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (OracleException ex)
+                    {
+                        for (int i = 0; i < ex.Errors.Count; i++)
+                        {
+                            errorMessages.Append("Index #" + i + "\n" +
+                                "Message: " + ex.Errors[i].Message + "\n" +
+                                "LineNumber: " + ex.Errors[i].Number + "\n" +
+                                "Source: " + ex.Errors[i].Source + "\n" +
+                                "Procedure: " + ex.Errors[i].Procedure + "\n");
+                        }
+                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Trebuie să specifici numărul minim  de consultații!", "Atenție", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
