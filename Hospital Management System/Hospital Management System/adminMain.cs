@@ -58,6 +58,8 @@ namespace Hospital_Management_System
             panelTratamente.Visible = false;
             panelMedicamente.SendToBack();
             panelMedicamente.Visible = false;
+            panelStatistici.SendToBack();
+            panelStatistici.Hide();
         }
 
         void autoSizeDataGridView(DataGridView grd)
@@ -4373,11 +4375,13 @@ namespace Hospital_Management_System
         }
         #endregion
 
-        #region altele
-
-        private void displayData()
+        private void linkLabelGroupHaving_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            /*String queryString = String.Format(@"SELECT * FROM LOCALITATI WHERE codJudet = " + codJudet);
+            String queryString = String.Format(@"SELECT d.codParafa, d.nume, d.prenume, d.telefon, d.email, d.codFunctie, d.idSectie, COUNT(c.idConsultatie) totalConsultatii
+                                                FROM DOCTORI d JOIN CONSULTATII c ON d.codParafa = c.codParafa
+                                                GROUP BY d.codParafa, d.nume, d.prenume, d.telefon, d.email, d.codFunctie, d.idSectie
+                                                HAVING COUNT(c.idConsultatie) > 5
+                                                ORDER BY totalConsultatii DESC");
             StringBuilder errorMessages = new StringBuilder();
 
             using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
@@ -4390,9 +4394,9 @@ namespace Hospital_Management_System
                     DataTable dataTable = new DataTable();
                     OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
                     dataAdapter.Fill(dataTable);
-                    dataGridViewJudete.DataSource = dataTable;
+                    dataGridViewStatistici.DataSource = dataTable;
 
-                    autoSizeDataGridView(dataGridViewJudete);
+                    autoSizeDataGridView(dataGridViewStatistici);
                 }
                 catch (OracleException ex)
                 {
@@ -4406,44 +4410,47 @@ namespace Hospital_Management_System
                     }
                     MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }*/
+            }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonStatistici_Click(object sender, EventArgs e)
         {
-            /*if (comboBox1.SelectedIndex != -1)
-            {
-                String queryString = String.Format(@"SELECT * FROM JUDETE WHERE numeJudet = '" + comboBox1.SelectedItem.ToString() + "'");
-                StringBuilder errorMessages = new StringBuilder();
-
-                using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
-                {
-                    OracleCommand command = new OracleCommand(queryString, connection);
-                    try
-                    {
-                        command.Connection.Open();
-                        OracleDataReader dataReader = command.ExecuteReader();
-
-                        dataReader.Read();
-                        codJudet = dataReader["codJudet"].ToString();
-                    }
-                    catch (OracleException ex)
-                    {
-                        for (int i = 0; i < ex.Errors.Count; i++)
-                        {
-                            errorMessages.Append("Index #" + i + "\n" +
-                                "Message: " + ex.Errors[i].Message + "\n" +
-                                "LineNumber: " + ex.Errors[i].Number + "\n" +
-                                "Source: " + ex.Errors[i].Source + "\n" +
-                                "Procedure: " + ex.Errors[i].Procedure + "\n");
-                        }
-                        MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                displayData();
-            }*/
+            panelStatistici.Show();
+            panelStatistici.BringToFront();
         }
 
-        #endregion
+        private void linkLabelNumarSpitale_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            String queryString = String.Format(@"SELECT * FROM NUMAR_SPITALE");
+            StringBuilder errorMessages = new StringBuilder();
+
+            using (OracleConnection connection = new OracleConnection(StartApp.connectionString))
+            {
+                OracleCommand command = new OracleCommand(queryString, connection);
+                try
+                {
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                    DataTable dataTable = new DataTable();
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(command);
+                    dataAdapter.Fill(dataTable);
+                    dataGridViewStatistici.DataSource = dataTable;
+
+                    autoSizeDataGridView(dataGridViewStatistici);
+                }
+                catch (OracleException ex)
+                {
+                    for (int i = 0; i < ex.Errors.Count; i++)
+                    {
+                        errorMessages.Append("Index #" + i + "\n" +
+                            "Message: " + ex.Errors[i].Message + "\n" +
+                            "LineNumber: " + ex.Errors[i].Number + "\n" +
+                            "Source: " + ex.Errors[i].Source + "\n" +
+                            "Procedure: " + ex.Errors[i].Procedure + "\n");
+                    }
+                    MessageBox.Show(errorMessages.ToString(), "Eroare.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

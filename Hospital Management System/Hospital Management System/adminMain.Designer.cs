@@ -315,6 +315,11 @@ namespace Hospital_Management_System
             this.labelnumeMedicament = new System.Windows.Forms.Label();
             this.labelidMedicament = new System.Windows.Forms.Label();
             this.dataGridViewMedicamente = new System.Windows.Forms.DataGridView();
+            this.buttonStatistici = new System.Windows.Forms.Button();
+            this.panelStatistici = new System.Windows.Forms.Panel();
+            this.dataGridViewStatistici = new System.Windows.Forms.DataGridView();
+            this.linkLabelGroupHaving = new System.Windows.Forms.LinkLabel();
+            this.linkLabelNumarSpitale = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJudete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckJudete)).BeginInit();
@@ -364,6 +369,8 @@ namespace Hospital_Management_System
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelMedicamente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckMedicamente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedicamente)).BeginInit();
+            this.panelStatistici.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistici)).BeginInit();
             this.SuspendLayout();
             // 
             // labelLogin
@@ -3760,12 +3767,81 @@ namespace Hospital_Management_System
             this.dataGridViewMedicamente.TabIndex = 2;
             this.dataGridViewMedicamente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMedicamente_CellClick);
             // 
+            // buttonStatistici
+            // 
+            this.buttonStatistici.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonStatistici.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStatistici.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonStatistici.Location = new System.Drawing.Point(0, 880);
+            this.buttonStatistici.Name = "buttonStatistici";
+            this.buttonStatistici.Size = new System.Drawing.Size(272, 56);
+            this.buttonStatistici.TabIndex = 73;
+            this.buttonStatistici.Text = "Statistici";
+            this.buttonStatistici.UseVisualStyleBackColor = false;
+            this.buttonStatistici.Click += new System.EventHandler(this.buttonStatistici_Click);
+            // 
+            // panelStatistici
+            // 
+            this.panelStatistici.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelStatistici.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panelStatistici.Controls.Add(this.linkLabelNumarSpitale);
+            this.panelStatistici.Controls.Add(this.linkLabelGroupHaving);
+            this.panelStatistici.Controls.Add(this.dataGridViewStatistici);
+            this.panelStatistici.Location = new System.Drawing.Point(272, 152);
+            this.panelStatistici.Name = "panelStatistici";
+            this.panelStatistici.Size = new System.Drawing.Size(1984, 936);
+            this.panelStatistici.TabIndex = 72;
+            // 
+            // dataGridViewStatistici
+            // 
+            this.dataGridViewStatistici.AllowUserToAddRows = false;
+            this.dataGridViewStatistici.AllowUserToDeleteRows = false;
+            this.dataGridViewStatistici.AllowUserToResizeColumns = false;
+            this.dataGridViewStatistici.AllowUserToResizeRows = false;
+            this.dataGridViewStatistici.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridViewStatistici.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewStatistici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStatistici.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataGridViewStatistici.Location = new System.Drawing.Point(760, 8);
+            this.dataGridViewStatistici.Name = "dataGridViewStatistici";
+            this.dataGridViewStatistici.ReadOnly = true;
+            this.dataGridViewStatistici.RowHeadersWidth = 51;
+            this.dataGridViewStatistici.RowTemplate.Height = 24;
+            this.dataGridViewStatistici.Size = new System.Drawing.Size(1216, 920);
+            this.dataGridViewStatistici.TabIndex = 2;
+            // 
+            // linkLabelGroupHaving
+            // 
+            this.linkLabelGroupHaving.AutoSize = true;
+            this.linkLabelGroupHaving.Font = new System.Drawing.Font("Segoe UI", 14.2F, System.Drawing.FontStyle.Bold);
+            this.linkLabelGroupHaving.Location = new System.Drawing.Point(8, 48);
+            this.linkLabelGroupHaving.Name = "linkLabelGroupHaving";
+            this.linkLabelGroupHaving.Size = new System.Drawing.Size(667, 32);
+            this.linkLabelGroupHaving.TabIndex = 4;
+            this.linkLabelGroupHaving.TabStop = true;
+            this.linkLabelGroupHaving.Text = "Afișare medici care au efectuat mai mult de 5 consultații.";
+            this.linkLabelGroupHaving.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGroupHaving_LinkClicked);
+            // 
+            // linkLabelNumarSpitale
+            // 
+            this.linkLabelNumarSpitale.AutoSize = true;
+            this.linkLabelNumarSpitale.Font = new System.Drawing.Font("Segoe UI", 14.2F, System.Drawing.FontStyle.Bold);
+            this.linkLabelNumarSpitale.Location = new System.Drawing.Point(8, 96);
+            this.linkLabelNumarSpitale.Name = "linkLabelNumarSpitale";
+            this.linkLabelNumarSpitale.Size = new System.Drawing.Size(820, 40);
+            this.linkLabelNumarSpitale.TabIndex = 5;
+            this.linkLabelNumarSpitale.TabStop = true;
+            this.linkLabelNumarSpitale.Text = "Numărul spitalelor la nivel de județ, repsectiv localitate.";
+            this.linkLabelNumarSpitale.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNumarSpitale_LinkClicked);
+            // 
             // adminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(2257, 1084);
+            this.Controls.Add(this.panelStatistici);
+            this.Controls.Add(this.buttonStatistici);
             this.Controls.Add(this.buttonFunctii);
             this.Controls.Add(this.buttonSectii);
             this.Controls.Add(this.buttonJudete);
@@ -3862,6 +3938,9 @@ namespace Hospital_Management_System
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelMedicamente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheckMedicamente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedicamente)).EndInit();
+            this.panelStatistici.ResumeLayout(false);
+            this.panelStatistici.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistici)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4152,5 +4231,10 @@ namespace Hospital_Management_System
         private System.Windows.Forms.Label labelnumeMedicament;
         private System.Windows.Forms.Label labelidMedicament;
         private System.Windows.Forms.DataGridView dataGridViewMedicamente;
+        private System.Windows.Forms.Button buttonStatistici;
+        private System.Windows.Forms.Panel panelStatistici;
+        private System.Windows.Forms.LinkLabel linkLabelGroupHaving;
+        private System.Windows.Forms.DataGridView dataGridViewStatistici;
+        private System.Windows.Forms.LinkLabel linkLabelNumarSpitale;
     }
 }

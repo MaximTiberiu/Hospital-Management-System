@@ -2414,7 +2414,7 @@ namespace Hospital_Management_System
             this.panelCautare.Controls.Add(this.textBoxcodBoalaCautare);
             this.panelCautare.Controls.Add(this.label6);
             this.panelCautare.Controls.Add(this.dataGridViewCautare);
-            this.panelCautare.Location = new System.Drawing.Point(264, 152);
+            this.panelCautare.Location = new System.Drawing.Point(272, 152);
             this.panelCautare.Name = "panelCautare";
             this.panelCautare.Size = new System.Drawing.Size(1984, 936);
             this.panelCautare.TabIndex = 92;
